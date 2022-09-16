@@ -29,7 +29,6 @@ public class TestController {
         test.setPassword("123");
         test.setEmail("zc@qq.com");
         test.setBirthday(new Date());
-
         testService.addTest(test);
         return "success";
     }
@@ -39,6 +38,14 @@ public class TestController {
     public String delTest(@PathVariable Integer id)
     {
         testService.delTest(id);
+        return"ok";
+    }
+    @RequestMapping("/update{email}")
+    @ResponseBody
+    public String updateTest(@PathVariable String email)
+    {
+
+        testService.updateTest(email);
         return"ok";
     }
 }
