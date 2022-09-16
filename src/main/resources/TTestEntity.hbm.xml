@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.backend.videoproject_backend.dto.TTestEntity" table="t_test" schema="bili">
+        <id name="id" column="id"/>
+        <property name="birthday" column="birthday"/>
+        <property name="email" column="email"/>
+        <property name="name" column="name"/>
+        <property name="password" column="password"/>
+    </class>
+</hibernate-mapping>
