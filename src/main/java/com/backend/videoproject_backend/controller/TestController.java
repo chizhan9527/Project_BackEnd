@@ -35,7 +35,7 @@ public class TestController {
         return "success";
     }
 
-    @DeleteMapping("/del/{id}")
+    @DeleteMapping("/del{id}")
     @ResponseBody
     public String delTest(@PathVariable Integer id)
     {

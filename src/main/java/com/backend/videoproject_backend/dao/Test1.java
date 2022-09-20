@@ -1,9 +1,7 @@
 package com.backend.videoproject_backend.dao;
 
+import com.backend.videoproject_backend.config.hiberBegin;
 import com.backend.videoproject_backend.dto.TTestEntity;
-
-import java.sql.Timestamp;
-import java.util.Date;
 
 public class Test1 extends hiberBegin {
     public void updateTest(String email)
