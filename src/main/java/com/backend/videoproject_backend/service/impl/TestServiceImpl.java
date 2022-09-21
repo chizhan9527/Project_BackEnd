@@ -35,6 +35,10 @@ public class TestServiceImpl implements TestService {
         testDao.deleteById(id);
     }
 
-    public void updateTest(String email){test1.updateTest(email);}
+    @Override
+    public void updateTest(String email)
+    {
+        test1.updateTest(email);
+    }
 
 }
