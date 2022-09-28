@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.backend.videoproject_backend.dto.TbUserEntity" table="tb_user" schema="bili">
+        <id name="id" column="id"/>
+        <property name="name" column="name"/>
+        <property name="phone" column="phone"/>
+        <property name="detail" column="detail"/>
+        <property name="password" column="password"/>
+        <property name="birthday" column="birthday"/>
+        <property name="avator" column="avator"/>
+        <property name="gender" column="gender"/>
+        <property name="email" column="email"/>
+    </class>
+</hibernate-mapping>

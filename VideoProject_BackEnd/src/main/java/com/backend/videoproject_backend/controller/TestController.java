@@ -10,11 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 
-/**
- * @author 展驰
- * @version 1.0
- * 2022/09/15
- */
 @Controller
 @Api(tags = "用户管理")
 public class TestController {
