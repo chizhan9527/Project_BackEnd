@@ -9,9 +9,9 @@ public class Test1 extends hiberBegin {
 
         creatConn();
         org.hibernate.Transaction ts=session.beginTransaction();
-        TTestEntity test=session.get(TTestEntity.class,3);
+        TTestEntity test=session.get(TTestEntity.class,6);
 
-        test.setName("11");
+        test.setEmail("11");
 
         session.update(test);
         ts.commit();

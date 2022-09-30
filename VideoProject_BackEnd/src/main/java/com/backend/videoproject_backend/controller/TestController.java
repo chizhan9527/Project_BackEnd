@@ -4,13 +4,14 @@ import com.backend.videoproject_backend.dto.Test;
 import com.backend.videoproject_backend.service.TestService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 
-@Controller
+@Slf4j
+@RestController
 @Api(tags = "用户管理")
 public class TestController {
     @Autowired
@@ -45,4 +46,6 @@ public class TestController {
         testService.updateTest(email);
         return"ok";
     }
+
+
 }
