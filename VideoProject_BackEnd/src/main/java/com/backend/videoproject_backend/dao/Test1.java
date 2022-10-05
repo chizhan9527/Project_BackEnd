@@ -8,6 +8,7 @@ public class Test1 extends hiberBegin {
     {
 
         creatConn();
+        //开启一个事务
         org.hibernate.Transaction ts=session.beginTransaction();
         TTestEntity test=session.get(TTestEntity.class,6);
 
