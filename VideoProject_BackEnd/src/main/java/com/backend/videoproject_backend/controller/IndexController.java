@@ -21,14 +21,9 @@ public class IndexController {
     @Autowired
     private SendSmsUtil sendSmsUtil;
 
-    @RequestMapping(value = {"/","/index"},method = RequestMethod.GET)
-    public String index(){
-        return "index";
-    }
-
     @ResponseBody
-    @RequestMapping(value = "/sendmessage",method = RequestMethod.POST)
-    public String sendmessage(@RequestParam String phone){
+    @RequestMapping(value = "/sendMessage",method = RequestMethod.POST)
+    public String sendMessage(@RequestParam String phone){
         //生成六位数随机验证码
         String code = RandomUtil.getSixBitRandom();
         //设置redis的key为用户手机号
