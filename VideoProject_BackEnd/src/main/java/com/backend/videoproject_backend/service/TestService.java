@@ -9,7 +9,6 @@ import com.backend.videoproject_backend.dto.Test;
  */
 public interface TestService {
     void addTest(Test test);
-
     void delTest(Integer id);
     void updateTest(String email);
 

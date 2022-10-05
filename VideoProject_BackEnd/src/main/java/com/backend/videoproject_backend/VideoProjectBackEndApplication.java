@@ -12,6 +12,7 @@ public class VideoProjectBackEndApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(VideoProjectBackEndApplication.class, args);
+
     }
 
 }

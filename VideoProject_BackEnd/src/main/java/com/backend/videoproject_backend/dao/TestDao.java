@@ -5,8 +5,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  * @author 展驰
- * @version 1.0
- * 2022/09/15
+ * @version 2.0
+ * 2022/09/28
  */
 public interface TestDao extends JpaRepository <Test,Integer> {
+
 }
