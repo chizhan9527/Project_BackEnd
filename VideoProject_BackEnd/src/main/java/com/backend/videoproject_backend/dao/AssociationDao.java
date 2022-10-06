@@ -17,4 +17,36 @@ public class AssociationDao  extends hiberBegin {
         closeConn();
 
     }
+
+    /*
+    public void createAssociation(String name)
+    {
+        creatConn();
+        org.hibernate.Transaction ts=session.beginTransaction();
+        TbAssociationEntity club=new TbAssociationEntity();
+        club.setAssociationName(name);
+        session.save(club);
+        ts.commit();
+        closeConn();
+    }
+    public void createAssociation(String name,String desc)
+    {
+        creatConn();
+        org.hibernate.Transaction ts=session.beginTransaction();
+        TbAssociationEntity club=new TbAssociationEntity();
+        club.setAssociationName(name);
+        club.setAssociationDesc(desc);
+        session.save(club);
+        ts.commit();
+        closeConn();
+    }
+    */
+    public void create(TbAssociationEntity club)
+    {
+        creatConn();
+        org.hibernate.Transaction ts=session.beginTransaction();
+        session.save(club);
+        ts.commit();
+        closeConn();
+    }
 }
