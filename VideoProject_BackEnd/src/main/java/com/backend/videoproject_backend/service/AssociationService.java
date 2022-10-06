@@ -6,9 +6,8 @@ public interface AssociationService {
 
     void delClub(Integer id);
 
-    void changeName(String name);
+    void changeName(Integer id,String name);
 
-    void changeDesc(String desc);
+    void changeDesc(Integer id,String desc);
 
-    void joinClub();
 }

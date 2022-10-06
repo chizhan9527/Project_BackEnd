@@ -13,14 +13,12 @@ public class AssociationServiceImpl implements AssociationService {
     public void addClub(TbAssociationEntity association){clubDao.create(association);};
 
     @Override
-    public void delClub(Integer id){};
+    public void delClub(Integer id){clubDao.delete(id);};
 
     @Override
-    public void changeName(String name){};
+    public void changeName(Integer id,String name){clubDao.updateName(id,name);};
 
     @Override
-    public void changeDesc(String desc){};
+    public void changeDesc(Integer id,String desc){clubDao.changeDesc(id,desc);};
 
-    @Override
-    public void joinClub(){};
 }

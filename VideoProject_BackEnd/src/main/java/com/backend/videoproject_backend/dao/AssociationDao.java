@@ -5,12 +5,12 @@ import com.backend.videoproject_backend.config.hiberBegin;
 import com.backend.videoproject_backend.dto.TbManagerEntity;
 
 public class AssociationDao  extends hiberBegin {
-    public void updateName(String name)
+    public void updateName(Integer id, String name)
     {
 
         creatConn();
         org.hibernate.Transaction ts=session.beginTransaction();
-        TbAssociationEntity club=session.get(TbAssociationEntity.class,6);
+        TbAssociationEntity club=session.get(TbAssociationEntity.class,id);
         club.setAssociationName(name);
         session.update(club);
         ts.commit();
@@ -46,6 +46,26 @@ public class AssociationDao  extends hiberBegin {
         creatConn();
         org.hibernate.Transaction ts=session.beginTransaction();
         session.save(club);
+        ts.commit();
+        closeConn();
+    }
+
+    public void delete(Integer id)
+    {
+        creatConn();
+        org.hibernate.Transaction ts=session.beginTransaction();
+        TbAssociationEntity club=session.get(TbAssociationEntity.class,id);
+        session.delete(club);
+        ts.commit();
+        closeConn();
+    }
+
+    public void changeDesc(Integer id,String desc)
+    {
+        creatConn();
+        org.hibernate.Transaction ts=session.beginTransaction();
+        TbAssociationEntity club=session.get(TbAssociationEntity.class,id);
+        club.setAssociationDesc(desc);
         ts.commit();
         closeConn();
     }
