@@ -25,7 +25,8 @@
     <mapping resource="hbmxml/TbPicEntity.hbm.xml"/>
     <mapping class="com.backend.videoproject_backend.dto.TbUserEntity"/>
     <mapping resource="hbmxml/TbUserEntity.hbm.xml"/>
-    <!-- <property name="connection.password"/> -->
+      <mapping resource="hbmxml/TbUserEntity.hbm.xml"/>
+      <!-- <property name="connection.password"/> -->
 
     <!-- DB schema will be updated if needed -->
     <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->

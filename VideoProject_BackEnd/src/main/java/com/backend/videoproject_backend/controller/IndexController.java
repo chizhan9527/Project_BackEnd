@@ -1,6 +1,7 @@
 package com.backend.videoproject_backend.controller;
 
 import com.backend.videoproject_backend.utils.SendSmsUtil;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,7 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 @Controller
+@Api(tags = "短信服务")
 public class IndexController {
 
     @Autowired
@@ -21,14 +23,9 @@ public class IndexController {
     @Autowired
     private SendSmsUtil sendSmsUtil;
 
-    @RequestMapping(value = {"/","/index"},method = RequestMethod.GET)
-    public String index(){
-        return "index";
-    }
-
     @ResponseBody
-    @RequestMapping(value = "/sendmessage",method = RequestMethod.POST)
-    public String sendmessage(@RequestParam String phone){
+    @RequestMapping(value = "/sendMessage",method = RequestMethod.POST)
+    public String sendMessage(@RequestParam String phone){
         //生成六位数随机验证码
         String code = RandomUtil.getSixBitRandom();
         //设置redis的key为用户手机号

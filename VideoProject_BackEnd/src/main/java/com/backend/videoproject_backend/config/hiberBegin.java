@@ -8,9 +8,9 @@ public class hiberBegin {
     SessionFactory sessionFactory;
     public void creatConn()
     {
-        Configuration configuration=new Configuration().configure();
-        sessionFactory=configuration.buildSessionFactory();
-        session= sessionFactory.openSession();
+        Configuration configuration = new Configuration().configure();
+        sessionFactory = configuration.buildSessionFactory();
+        session = sessionFactory.openSession();
     }
     public void closeConn()
     {

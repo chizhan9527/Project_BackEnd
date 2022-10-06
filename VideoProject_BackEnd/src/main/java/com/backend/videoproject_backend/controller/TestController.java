@@ -2,24 +2,22 @@ package com.backend.videoproject_backend.controller;
 
 import com.backend.videoproject_backend.dto.Test;
 import com.backend.videoproject_backend.service.TestService;
+import com.backend.videoproject_backend.utils.SendSmsUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 
-/**
- * @author 展驰
- * @version 1.0
- * 2022/09/15
- */
-@Controller
+@RestController
 @Api(tags = "用户管理")
 public class TestController {
     @Autowired
     private TestService testService;
+
+    @Autowired
+    private SendSmsUtil sendSmsUtil;
 
     @PostMapping ("/save")
     @ResponseBody
@@ -50,4 +48,13 @@ public class TestController {
         testService.updateTest(email);
         return"ok";
     }
+
+    @PostMapping ("/fageduanxin")
+    @ResponseBody
+    public String send(@RequestParam String phone,@RequestParam String code)
+    {
+        sendSmsUtil.sendSms(phone,code);
+        return "ok";
+    }
+
 }
