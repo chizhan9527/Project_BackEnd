@@ -22,4 +22,9 @@ public class UserServiceImpl implements UserService {
         userDao.save(tbUserEntity);
     }
 
+    @Override
+    public void deleteUser(Integer id)
+    {
+        userDao.deleteById(id);
+    }
 }

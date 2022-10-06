@@ -5,9 +5,7 @@ import com.backend.videoproject_backend.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;
 import java.util.Date;
@@ -23,7 +21,7 @@ public class UserController {
     @PostMapping("/user")
     @ResponseBody
     @ApiOperation("新建一个用户信息")
-    public String PostUser(String name,String phone,String password,String avatar)
+    public String PostUser(String name,String phone,String password,@RequestParam(defaultValue = "0") String avatar)
     {
         try{
             TbUserEntity tbUserEntity = new TbUserEntity();
@@ -33,6 +31,19 @@ public class UserController {
             tbUserEntity.setAvator(avatar);
             tbUserEntity.setCreateTime(new Timestamp(new Date().getTime()));
             userService.addUser(tbUserEntity);
+            return "ok";
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @DeleteMapping("/user/{id}")
+    @ResponseBody
+    @ApiOperation("删除一个用户信息")
+    public String DeleteUser(@PathVariable Integer id)
+    {
+        try {
+            userService.deleteUser(id);
             return "ok";
         } catch (Exception e) {
             throw new RuntimeException(e);

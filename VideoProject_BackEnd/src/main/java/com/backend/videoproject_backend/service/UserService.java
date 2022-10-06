@@ -10,9 +10,9 @@ public interface UserService {
 
     void addUser(TbUserEntity tbUserEntity);
 
-    /*void deleteUser();
+    void deleteUser(Integer id);
 
-    void findUser();
+    /*void findUser();
 
     void updateUser();*/
 }
