@@ -1,6 +1,7 @@
 package com.backend.videoproject_backend.controller;
 
 import com.backend.videoproject_backend.utils.SendSmsUtil;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,7 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 @Controller
+@Api(tags = "短信服务")
 public class IndexController {
 
     @Autowired

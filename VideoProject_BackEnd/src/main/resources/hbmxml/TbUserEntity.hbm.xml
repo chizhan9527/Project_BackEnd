@@ -14,5 +14,6 @@
         <property name="avator" column="avator"/>
         <property name="gender" column="gender"/>
         <property name="email" column="email"/>
+        <property name="createTime" column="create_time"/>
     </class>
 </hibernate-mapping>

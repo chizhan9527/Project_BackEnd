@@ -1,6 +1,7 @@
 package com.backend.videoproject_backend.dto;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "tb_user", schema = "bili", catalog = "")
@@ -33,6 +34,9 @@ public class TbUserEntity {
     @Basic
     @Column(name = "email")
     private String email;
+    @Basic
+    @Column(name = "create_time")
+    private Timestamp createTime;
 
     public int getId() {
         return id;
@@ -104,5 +108,13 @@ public class TbUserEntity {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Timestamp getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Timestamp createTime) {
+        this.createTime = createTime;
     }
 }
