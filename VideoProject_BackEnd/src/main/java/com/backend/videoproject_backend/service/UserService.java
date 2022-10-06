@@ -1,6 +1,9 @@
 package com.backend.videoproject_backend.service;
 import com.backend.videoproject_backend.dto.TbUserEntity;
 
+import java.util.List;
+import java.util.Optional;
+
 /**
  * @author 展驰
  * @version 1.0
@@ -12,7 +15,9 @@ public interface UserService {
 
     void deleteUser(Integer id);
 
-    /*void findUser();
+    List<TbUserEntity> findAllUser();
 
-    void updateUser();*/
+    Optional<TbUserEntity> findUserById(Integer id);
+
+    /*void updateUser();*/
 }

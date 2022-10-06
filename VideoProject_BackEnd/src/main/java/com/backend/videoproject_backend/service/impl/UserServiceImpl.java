@@ -6,6 +6,10 @@ import com.backend.videoproject_backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
+
 /**
  * @author 展驰
  * @version 1.0
@@ -27,4 +31,17 @@ public class UserServiceImpl implements UserService {
     {
         userDao.deleteById(id);
     }
+
+    @Override
+    public List<TbUserEntity> findAllUser()
+    {
+        return userDao.findAll();
+    }
+
+    @Override
+    public Optional<TbUserEntity> findUserById(Integer id)
+    {
+        return userDao.findById(id);
+    }
+
 }
