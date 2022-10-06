@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -50,4 +52,27 @@ public class UserController {
         }
     }
 
+    @GetMapping("/user")
+    @ResponseBody
+    @ApiOperation("查询所有用户信息")
+    public List<TbUserEntity> FindAllUser()
+    {
+        try {
+            return userService.findAllUser();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @GetMapping("/user/{id}")
+    @ResponseBody
+    @ApiOperation("查询一名用户信息")
+    public Optional<TbUserEntity> FindOneUser(@PathVariable Integer id)
+    {
+        try {
+            return userService.findUserById(id);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
