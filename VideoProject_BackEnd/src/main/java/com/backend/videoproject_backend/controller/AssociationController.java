@@ -18,7 +18,7 @@ import java.util.Date;
 public class AssociationController {
 
     @Autowired
-    public AssociationService associationServic;
+    public AssociationService associationService;
 
     @PostMapping("/club")
     @ResponseBody
@@ -30,7 +30,7 @@ public class AssociationController {
             tbAssociationEntity.setAssociationName(name);
             tbAssociationEntity.setAssociationDesc(desc);
             tbAssociationEntity.setEstablishTime(new Timestamp(new Date().getTime()));
-            associationServic.addClub(tbAssociationEntity);
+            associationService.addClub(tbAssociationEntity);
             return "ok";
         } catch (Exception e) {
             throw new RuntimeException(e);
