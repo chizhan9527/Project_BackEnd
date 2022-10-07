@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Date;
 
 @RestController
-@Api(tags = "测试喵")
+@Api(tags = "用户管理")
 public class TestController {
     @Autowired
     private TestService testService;

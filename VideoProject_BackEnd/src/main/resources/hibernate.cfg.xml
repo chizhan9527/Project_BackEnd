@@ -6,7 +6,7 @@
   <session-factory>
     <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 
-    <property name="connection.url">jdbc:mysql://106.12.131.109:3306/bili</property>
+    <property name="connection.url">jdbc:mysql://106.12.131.109:3306</property>
 
     <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
 
@@ -26,6 +26,11 @@
     <mapping class="com.backend.videoproject_backend.dto.TbUserEntity"/>
     <mapping resource="hbmxml/TbUserEntity.hbm.xml"/>
       <mapping resource="hbmxml/TbUserEntity.hbm.xml"/>
+      <mapping resource="hbmxml/TbAssociationEntity.hbm.xml"/>
+      <mapping class="com.backend.videoproject_backend.dto.TbAssociationEntity"/>
+      <mapping class="com.backend.videoproject_backend.dto.TbManagerEntity"/>
+      <mapping resource="hbmxml/TbManagerEntity.hbm.xml"/>
+      <mapping resource="hbmxml/TbManagerEntity.hbm.xml"/>
       <!-- <property name="connection.password"/> -->
 
     <!-- DB schema will be updated if needed -->

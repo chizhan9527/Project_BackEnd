@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="https://jakarta.ee/xml/ns/persistence/orm"
+                 version="3.0">
+
+    <entity class="com.backend.videoproject_backend.dto.TbManagerEntity">
+        <table name="tb_manager" schema="bili" catalog=""/>
+        <attributes>
+            <id name="id">
+                <column name="id"/>
+            </id>
+            <basic name="asId">
+                <column name="as_id"/>
+            </basic>
+            <basic name="userId">
+                <column name="user_id"/>
+            </basic>
+            <basic name="status">
+                <column name="status"/>
+            </basic>
+            <basic name="joinTime">
+                <column name="join_time"/>
+            </basic>
+        </attributes>
+    </entity>
+</entity-mappings>
