@@ -12,6 +12,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import static com.backend.videoproject_backend.utils.MD5Util.encrypt;
+
 
 @RestController
 @Api(tags = "用户管理")
@@ -29,7 +31,7 @@ public class UserController {
             TbUserEntity tbUserEntity = new TbUserEntity();
             tbUserEntity.setName(name);
             tbUserEntity.setPhone(phone);
-            tbUserEntity.setPassword(password);
+            tbUserEntity.setPassword(encrypt(password));
             tbUserEntity.setAvator(avatar);
             tbUserEntity.setCreateTime(new Timestamp(new Date().getTime()));
             userService.addUser(tbUserEntity);
