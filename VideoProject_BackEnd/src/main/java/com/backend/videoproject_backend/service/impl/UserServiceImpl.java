@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.zip.Checksum;
 
 
 /**
@@ -43,5 +44,12 @@ public class UserServiceImpl implements UserService {
     {
         return userDao.findById(id);
     }
+
+    @Override
+    public void updateUser(TbUserEntity tbUserEntity)
+    {
+        userDao.save(tbUserEntity);
+    }
+
 
 }

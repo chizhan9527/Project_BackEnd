@@ -71,7 +71,7 @@
             <version>2.9.2</version>
         </dependency>
 
-        <!--JWT 依赖库-->
+        <!--JWT 依赖-->
         <dependency>
             <groupId>com.auth0</groupId>
             <artifactId>java-jwt</artifactId>
@@ -96,7 +96,7 @@
             <artifactId>lombok</artifactId>
         </dependency>-->
 
-        <!--redis 依赖库-->
+        <!--redis 依赖-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
@@ -116,6 +116,11 @@
             <version>3.1.600</version>
         </dependency>
 
+        <!--springAmqp依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

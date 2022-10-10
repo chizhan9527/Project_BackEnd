@@ -19,5 +19,5 @@ public interface UserService {
 
     Optional<TbUserEntity> findUserById(Integer id);
 
-    /*void updateUser();*/
+    void updateUser(TbUserEntity tbUserEntity);
 }

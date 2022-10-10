@@ -77,4 +77,31 @@ public class UserController {
             throw new RuntimeException(e);
         }
     }
+
+    @PutMapping("/user/{id}")
+    @ResponseBody
+    @ApiOperation("更新一名用户信息")
+    public String UpdateUser(@PathVariable Integer id,String name,String phone,String detail,String password,String birthday,@RequestParam(defaultValue = "0") String avatar,Integer gender,String email)
+    {
+        try {
+            Optional<TbUserEntity> tbUserEntity = userService.findUserById(id);
+            if(tbUserEntity.isPresent()) {
+                tbUserEntity.get().setName(name);
+                tbUserEntity.get().setPhone(phone);
+                tbUserEntity.get().setDetail(detail);
+                tbUserEntity.get().setPassword(encrypt(password));
+                tbUserEntity.get().setBirthday(birthday);
+                tbUserEntity.get().setAvator(avatar);
+                tbUserEntity.get().setGender(gender);
+                tbUserEntity.get().setEmail(email);
+                userService.updateUser(tbUserEntity.get());
+                return "ok";
+            }
+            else {
+                return "error";
+            }
+    }catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
