@@ -1,4 +1,4 @@
-package com.backend.videoproject_backend.dao;
+package com.backend.videoproject_backend.dao.Impl;
 
 import com.backend.videoproject_backend.config.hiberBegin;
 import com.backend.videoproject_backend.dto.TTestEntity;
