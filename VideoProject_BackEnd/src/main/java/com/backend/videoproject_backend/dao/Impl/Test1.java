@@ -6,7 +6,6 @@ import com.backend.videoproject_backend.dto.TTestEntity;
 public class Test1 extends hiberBegin {
     public void updateTest(String email)
     {
-
         creatConn();
         //开启一个事务
         org.hibernate.Transaction ts=session.beginTransaction();
