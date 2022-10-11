@@ -37,3 +37,6 @@
 2022-10-12 00:40:57.668 INFO  17832 --- [http-nio-8081-exec-1] o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
 2022-10-12 00:40:57.668 INFO  17832 --- [http-nio-8081-exec-1] org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
 2022-10-12 00:40:57.669 INFO  17832 --- [http-nio-8081-exec-1] org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2022-10-12 00:41:25.196 INFO  17832 --- [SpringApplicationShutdownHook] o.s.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-12 00:41:25.197 INFO  17832 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2022-10-12 00:41:25.201 INFO  17832 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
