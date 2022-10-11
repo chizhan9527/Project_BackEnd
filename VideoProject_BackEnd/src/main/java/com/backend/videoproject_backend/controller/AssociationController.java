@@ -57,16 +57,25 @@ public class AssociationController {
     {
         try{
             Optional<TbAssociationEntity> tbAssociationEntity=associationService.findAssociationById(id);
-            if(type.equals("name"))
-            {
-                tbAssociationEntity.get().setAssociationName(info);
+            if(tbAssociationEntity.isPresent()) {
+                TbAssociationEntity tbAssociationEntity1=tbAssociationEntity.get();
+                switch (type)
+                {
+                    case "name":
+                        tbAssociationEntity1.setAssociationName(info);
+                        break;
+                    case "desc":
+                        tbAssociationEntity1.setAssociationDesc(info);
+                        break;
+                    default:
+                        return "error";
+                }
+                associationService.updateAssociation(tbAssociationEntity1);
+                return "ok";
             }
-            else if(type.equals("desc"))
-            {
-                tbAssociationEntity.get().setAssociationDesc(info);
+            else {
+                return "error";
             }
-            associationService.updateAssociation(tbAssociationEntity.get());
-            return "ok";
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
