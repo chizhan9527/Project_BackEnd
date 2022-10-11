@@ -1,6 +1,6 @@
 package com.backend.videoproject_backend.dao.Impl;
 
-import com.backend.videoproject_backend.config.hiberBegin;
+import com.backend.videoproject_backend.utils.hiberBegin;
 import com.backend.videoproject_backend.dto.TTestEntity;
 
 public class Test1 extends hiberBegin {

@@ -2,7 +2,7 @@ package com.backend.videoproject_backend.dao;
 
 import com.backend.videoproject_backend.dto.Test;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
+
 
 /**
  * @author 展驰

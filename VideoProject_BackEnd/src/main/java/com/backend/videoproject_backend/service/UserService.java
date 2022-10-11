@@ -20,4 +20,8 @@ public interface UserService {
     Optional<TbUserEntity> findUserById(Integer id);
 
     void updateUser(TbUserEntity tbUserEntity);
+
+    Optional<TbUserEntity> findUserByName(String name);
+
+    Optional<TbUserEntity> findUserByPhone(String phone);
 }

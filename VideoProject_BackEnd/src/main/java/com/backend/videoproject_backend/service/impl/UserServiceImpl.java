@@ -51,5 +51,16 @@ public class UserServiceImpl implements UserService {
         userDao.save(tbUserEntity);
     }
 
+    @Override
+    public Optional<TbUserEntity> findUserByName(String name)
+    {
+        return userDao.findByName(name);
+    }
+
+    @Override
+    public Optional<TbUserEntity> findUserByPhone(String phone) {
+        return userDao.findByPhone(phone);
+    }
+
 
 }
