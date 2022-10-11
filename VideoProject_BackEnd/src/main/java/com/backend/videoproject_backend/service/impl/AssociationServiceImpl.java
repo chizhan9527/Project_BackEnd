@@ -38,4 +38,7 @@ public class AssociationServiceImpl implements AssociationService {
         associationDao.save(tbAssociationEntity);
     }
 
+    public Optional<TbAssociationEntity> findUserByName(String name){
+        return associationDao.findByName(name);
+    };
 }
