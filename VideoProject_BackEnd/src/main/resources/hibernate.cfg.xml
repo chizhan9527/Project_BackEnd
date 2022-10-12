@@ -31,7 +31,9 @@
       <mapping class="com.backend.videoproject_backend.dto.TbManagerEntity"/>
       <mapping resource="hbmxml/TbManagerEntity.hbm.xml"/>
       <mapping resource="hbmxml/TbManagerEntity.hbm.xml"/>
-      <!-- <property name="connection.password"/> -->
+    <mapping resource="hbmxml/TTestEntity.hbm.xml"/>
+    <mapping class="com.backend.videoproject_backend.dto.TTestEntity"/>
+    <!-- <property name="connection.password"/> -->
 
     <!-- DB schema will be updated if needed -->
     <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
