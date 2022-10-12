@@ -1,4 +1,9 @@
 package com.backend.videoproject_backend.service;
 
-public class ManagerService {
+import com.backend.videoproject_backend.dto.TbManagerEntity;
+
+public interface ManagerService {
+    void joinClub(TbManagerEntity tbManagerEntity);
+
+
 }

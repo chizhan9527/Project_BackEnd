@@ -1,7 +1,9 @@
 package com.backend.videoproject_backend.controller;
 
 import com.backend.videoproject_backend.dto.TbAssociationEntity;
+import com.backend.videoproject_backend.dto.TbManagerEntity;
 import com.backend.videoproject_backend.service.AssociationService;
+import com.backend.videoproject_backend.service.ManagerService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,18 +21,28 @@ public class AssociationController {
 
     @Autowired
     public AssociationService associationService;
+    @Autowired
+    public ManagerService managerService;
 
     @PostMapping("/club")
     @ResponseBody
     @ApiOperation("新建一个社团")
-    public String PostClub(String name,@RequestParam(defaultValue ="") String desc)
+    public String PostClub(String name,@RequestParam(defaultValue ="") String desc,Integer user_id)
     {
         try{
+            //创建社团
             TbAssociationEntity tbAssociationEntity = new TbAssociationEntity();
             tbAssociationEntity.setAssociationName(name);
             tbAssociationEntity.setAssociationDesc(desc);
             tbAssociationEntity.setEstablishTime(new Timestamp(new Date().getTime()));
             associationService.addClub(tbAssociationEntity);
+            //创建社长的关联表
+            TbManagerEntity tbManagerEntity=new TbManagerEntity();
+            tbManagerEntity.setAsId(tbAssociationEntity.getId());
+            tbManagerEntity.setUserId(user_id);
+            tbManagerEntity.setJoinTime(tbAssociationEntity.getEstablishTime());
+            tbManagerEntity.setStatus(2);
+            managerService.joinClub(tbManagerEntity);
             return "ok";
         } catch (Exception e) {
             throw new RuntimeException(e);

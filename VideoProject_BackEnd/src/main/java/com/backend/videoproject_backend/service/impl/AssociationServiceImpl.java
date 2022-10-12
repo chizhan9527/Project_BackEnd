@@ -2,7 +2,6 @@ package com.backend.videoproject_backend.service.impl;
 
 import com.backend.videoproject_backend.dao.AssociationDao;
 import com.backend.videoproject_backend.dto.TbAssociationEntity;
-import com.backend.videoproject_backend.dto.TbUserEntity;
 import com.backend.videoproject_backend.service.AssociationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,6 +38,6 @@ public class AssociationServiceImpl implements AssociationService {
     }
 
     public Optional<TbAssociationEntity> findUserByName(String name){
-        return associationDao.findByName(name);
+        return associationDao.findByassociationName(name);
     };
 }

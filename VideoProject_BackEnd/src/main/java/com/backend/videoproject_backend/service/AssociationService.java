@@ -11,7 +11,7 @@ public interface AssociationService {
 
     Optional<TbAssociationEntity> findAssociationById(Integer id);
 
-    public List<TbAssociationEntity> findAllClub();
+    List<TbAssociationEntity> findAllClub();
 
     void updateAssociation(TbAssociationEntity tbAssociationEntity);
 
