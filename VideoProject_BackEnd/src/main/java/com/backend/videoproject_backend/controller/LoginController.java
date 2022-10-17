@@ -1,5 +1,6 @@
 package com.backend.videoproject_backend.controller;
 
+import cn.dev33.satoken.session.SaSession;
 import cn.dev33.satoken.stp.SaTokenInfo;
 import cn.dev33.satoken.stp.StpUtil;
 import cn.dev33.satoken.util.SaResult;
@@ -32,6 +33,7 @@ public class LoginController {
             if(tbUserEntity.get().getPassword().equals(encrypt(password))){
                 StpUtil.login(tbUserEntity.get().getId());
                 SaTokenInfo saTokenInfo = StpUtil.getTokenInfo();
+                StpUtil.getSession().set("user", tbUserEntity.get().getName());
                 return SaResult.data(saTokenInfo);
             }
         }
@@ -66,5 +68,26 @@ public class LoginController {
         return SaResult.ok();
     }
 
+    //获取用户姓名
+    @GetMapping("/name")
+    @ResponseBody
+    @ApiOperation("获取用户姓名")
+    public String getName()
+    {
+        // 获取当前会话账号id, 并转化为`int`类型
+        int userId = StpUtil.getLoginIdAsInt();
+        //对id进行isPresent检测,若不存在，返回null
+        Optional<TbUserEntity> tbUserEntity = userService.findUserById(userId);
+        return tbUserEntity.map(TbUserEntity::getName).orElse(null);
+    }
+
+    //获取session
+    @GetMapping("/session")
+    @ResponseBody
+    @ApiOperation("获取session")
+    public SaSession getSession()
+    {
+        return StpUtil.getSession();
+    }
 }
 
