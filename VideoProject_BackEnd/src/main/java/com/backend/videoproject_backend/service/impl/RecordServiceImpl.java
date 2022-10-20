@@ -6,6 +6,9 @@ import com.backend.videoproject_backend.service.RecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class RecordServiceImpl implements RecordService {
     @Autowired
@@ -16,4 +19,12 @@ public class RecordServiceImpl implements RecordService {
     {
         recordDao.save(tbRecordEntity);
     }
+
+    @Override
+    public List<TbRecordEntity> findByUserId(Integer userId)
+    {
+        return recordDao.findByUserId(userId);
+    }
+
+
 }
