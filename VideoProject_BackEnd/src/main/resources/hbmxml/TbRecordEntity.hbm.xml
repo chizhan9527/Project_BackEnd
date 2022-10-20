@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.backend.videoproject_backend.dto.TbRecordEntity" table="tb_record" schema="bili">
+        <id name="id" column="id"/>
+        <property name="userId" column="user_id"/>
+        <property name="distance" column="distance"/>
+        <property name="pace" column="pace"/>
+        <property name="steps" column="steps"/>
+        <property name="stepsFrequency" column="steps_frequency"/>
+        <property name="time" column="time"/>
+        <property name="createTime" column="create_time"/>
+    </class>
+</hibernate-mapping>
