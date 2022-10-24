@@ -38,7 +38,8 @@
       <mapping resource="hbmxml/TbRecordEntity.hbm.xml"/>
     <mapping resource="hbmxml/TbRecordEntity.hbm.xml"/>
     <mapping resource="hbmxml/TbRecordEntity.hbm.xml"/>
-    <!-- <property name="connection.password"/> -->
+      <mapping resource="hbmxml/TbArticleEntity.hbm.xml"/>
+      <!-- <property name="connection.password"/> -->
 
     <!-- DB schema will be updated if needed -->
     <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->

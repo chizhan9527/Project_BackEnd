@@ -1,13 +1,14 @@
 package com.backend.videoproject_backend.controller;
 
+import com.backend.videoproject_backend.dto.TbArticleEntity;
 import com.backend.videoproject_backend.service.ArticleService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @Controller
 @Api(tags = "文章管理")
@@ -16,11 +17,31 @@ public class ArticleController {
     @Autowired
     public ArticleService articleService;
 
+    @PostMapping("/article")
+    @ResponseBody
+    @ApiOperation("发布文章")
+    public String publishArticle(String context) {
+        try {
+            articleService.addArticle(context);
+            return "ok";
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @PutMapping("/article/like/{id}")
     @ResponseBody
     @ApiOperation("点赞")
-    public String LikeArticle(@PathVariable Integer id)
+    public String likeArticle(@PathVariable Integer id)
     {
         return articleService.likeArticle(id);
+    }
+
+    @GetMapping("/article/{id}")
+    @ResponseBody
+    @ApiOperation("获取文章")
+    public TbArticleEntity getArticleById(@PathVariable Integer id)
+    {
+        return articleService.getArticleById(id);
     }
 }
