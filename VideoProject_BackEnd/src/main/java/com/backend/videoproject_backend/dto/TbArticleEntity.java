@@ -26,6 +26,10 @@ public class TbArticleEntity {
     @Column(name = "create_time")
     private Timestamp createTime;
 
+    //非一个到数据库表字段的映射
+    @Transient
+    private Boolean isLike;
+
     public int getId() {
         return id;
     }
@@ -72,5 +76,13 @@ public class TbArticleEntity {
 
     public void setCreateTime(Timestamp createTime) {
         this.createTime = createTime;
+    }
+
+    public Boolean getLike() {
+        return isLike;
+    }
+
+    public void setLike(Boolean like) {
+        isLike = like;
     }
 }
