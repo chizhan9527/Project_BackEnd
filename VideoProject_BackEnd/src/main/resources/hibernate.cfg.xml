@@ -31,6 +31,14 @@
       <mapping class="com.backend.videoproject_backend.dto.TbManagerEntity"/>
       <mapping resource="hbmxml/TbManagerEntity.hbm.xml"/>
       <mapping resource="hbmxml/TbManagerEntity.hbm.xml"/>
+    <mapping resource="hbmxml/TTestEntity.hbm.xml"/>
+    <mapping class="com.backend.videoproject_backend.dto.TTestEntity"/>
+      <mapping class="com.backend.videoproject_backend.dto.TbRecordEntity"/>
+      <mapping resource="hbmxml/TbRecordEntity.hbm.xml"/>
+      <mapping resource="hbmxml/TbRecordEntity.hbm.xml"/>
+    <mapping resource="hbmxml/TbRecordEntity.hbm.xml"/>
+    <mapping resource="hbmxml/TbRecordEntity.hbm.xml"/>
+      <mapping resource="hbmxml/TbArticleEntity.hbm.xml"/>
       <!-- <property name="connection.password"/> -->
 
     <!-- DB schema will be updated if needed -->

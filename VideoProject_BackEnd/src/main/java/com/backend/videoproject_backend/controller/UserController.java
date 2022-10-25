@@ -14,7 +14,6 @@ import java.util.Optional;
 
 import static com.backend.videoproject_backend.utils.MD5Util.encrypt;
 
-
 @RestController
 @Api(tags = "用户管理")
 public class UserController {
