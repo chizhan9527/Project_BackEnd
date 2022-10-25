@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -43,5 +44,13 @@ public class ArticleController {
     public TbArticleEntity getArticleById(@PathVariable Integer id)
     {
         return articleService.getArticleById(id);
+    }
+
+    @GetMapping("/article/page/{currentPage}")
+    @ResponseBody
+    @ApiOperation("分页查询文章")
+    public List<TbArticleEntity> getArticleByPage(@PathVariable Integer currentPage)
+    {
+        return articleService.getByPageService(currentPage);
     }
 }

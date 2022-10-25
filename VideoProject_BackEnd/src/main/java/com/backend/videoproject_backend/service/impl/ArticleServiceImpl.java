@@ -6,14 +6,21 @@ import com.backend.videoproject_backend.dao.UserDao;
 import com.backend.videoproject_backend.dto.TbArticleEntity;
 import com.backend.videoproject_backend.dto.TbUserEntity;
 import com.backend.videoproject_backend.service.ArticleService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Service
 public class ArticleServiceImpl implements ArticleService {
 
@@ -114,6 +121,26 @@ public class ArticleServiceImpl implements ArticleService {
         tbArticleEntity.setCreateTime(new Timestamp(new Date().getTime()));
         tbArticleEntity.setType("article");
         articleDao.save(tbArticleEntity);
+    }
+
+
+    @Override
+    public List<TbArticleEntity> getByPageService(Integer currentPage) {
+
+        int pageSize = 20;//设置每页显示的数据数
+        //设置分页条件，传入当前页面和页面大小
+        Pageable pageable = PageRequest.of(currentPage-1, pageSize);
+        List<TbArticleEntity> tbArticleEntityList = articleDao.findAllByOrderByCreateTimeDesc(pageable);
+
+        tbArticleEntityList.forEach(tbArticleEntity -> {
+            //查询article有关用户
+            queryArticleUser(tbArticleEntity);
+            //查询是否被点过赞
+            isArticleLiked(tbArticleEntity);
+        });
+        
+        log.info("打印第{}页,每页数量{}条,\n该页查询结果为:{}",currentPage,pageSize,tbArticleEntityList);
+        return tbArticleEntityList;
     }
 }
 

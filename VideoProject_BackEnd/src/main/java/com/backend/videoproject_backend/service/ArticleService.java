@@ -3,6 +3,7 @@ package com.backend.videoproject_backend.service;
 
 import com.backend.videoproject_backend.dto.TbArticleEntity;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface ArticleService {
@@ -11,4 +12,7 @@ public interface ArticleService {
     TbArticleEntity getArticleById(Integer id);
 
     void addArticle(String context);
+
+    List<TbArticleEntity> getByPageService(Integer currentPage);
+
 }
