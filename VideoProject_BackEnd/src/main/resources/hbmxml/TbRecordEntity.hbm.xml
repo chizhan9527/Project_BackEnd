@@ -4,13 +4,14 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="com.backend.videoproject_backend.dto.TbArticleEntity" table="tb_article" schema="bili">
+    <class name="com.backend.videoproject_backend.dto.TbRecordEntity" table="tb_record" schema="bili">
         <id name="id" column="id"/>
-        <property name="context" column="context"/>
-        <property name="likes" column="likes"/>
         <property name="userId" column="user_id"/>
-        <property name="parentId" column="parent_id"/>
+        <property name="distance" column="distance"/>
+        <property name="pace" column="pace"/>
+        <property name="steps" column="steps"/>
+        <property name="stepsFrequency" column="steps_frequency"/>
+        <property name="time" column="time"/>
         <property name="createTime" column="create_time"/>
-        <property name="type" column="type"/>
     </class>
 </hibernate-mapping>

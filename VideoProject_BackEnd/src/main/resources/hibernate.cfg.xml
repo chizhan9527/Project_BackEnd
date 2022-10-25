@@ -33,7 +33,13 @@
       <mapping resource="hbmxml/TbManagerEntity.hbm.xml"/>
     <mapping resource="hbmxml/TTestEntity.hbm.xml"/>
     <mapping class="com.backend.videoproject_backend.dto.TTestEntity"/>
-    <!-- <property name="connection.password"/> -->
+      <mapping class="com.backend.videoproject_backend.dto.TbRecordEntity"/>
+      <mapping resource="hbmxml/TbRecordEntity.hbm.xml"/>
+      <mapping resource="hbmxml/TbRecordEntity.hbm.xml"/>
+    <mapping resource="hbmxml/TbRecordEntity.hbm.xml"/>
+    <mapping resource="hbmxml/TbRecordEntity.hbm.xml"/>
+      <mapping resource="hbmxml/TbArticleEntity.hbm.xml"/>
+      <!-- <property name="connection.password"/> -->
 
     <!-- DB schema will be updated if needed -->
     <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->

@@ -1,6 +1,5 @@
 package com.backend.videoproject_backend.utils.netty;
 
-import com.backend.videoproject_backend.service.SocketServer;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;

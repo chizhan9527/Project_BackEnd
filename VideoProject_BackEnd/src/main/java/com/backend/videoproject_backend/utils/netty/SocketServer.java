@@ -1,4 +1,4 @@
-package com.backend.videoproject_backend.service;
+package com.backend.videoproject_backend.utils.netty;
 
 import com.backend.videoproject_backend.utils.netty.SocketInitializer;
 import io.netty.bootstrap.ServerBootstrap;
