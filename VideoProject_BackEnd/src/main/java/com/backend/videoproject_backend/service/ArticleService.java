@@ -14,4 +14,5 @@ public interface ArticleService {
 
     List<TbArticleEntity> getByPageService(Integer currentPage);
 
+    List<TbArticleEntity> getByPageAndUserIdService(Integer id, Integer currentPage);
 }
