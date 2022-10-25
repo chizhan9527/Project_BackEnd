@@ -18,4 +18,9 @@ public class ManagerServiceImpl implements ManagerService  {
     public void joinClub(TbManagerEntity tbManagerEntity){
         managerDao.save(tbManagerEntity);
     }
+
+    @Override
+    public void quitClub(Integer as_id,Integer user_id){
+        managerDao.deleteByAsIdAndUserId(as_id,user_id);
+    }
 }

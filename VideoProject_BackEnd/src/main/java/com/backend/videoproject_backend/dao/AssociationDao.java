@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 
 public interface AssociationDao extends JpaRepository<TbAssociationEntity,Integer>{
-    Optional<TbAssociationEntity> findByassociationName(String name);
+    Optional<TbAssociationEntity> findByAssociationName(String name);
 }

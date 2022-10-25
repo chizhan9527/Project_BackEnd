@@ -6,6 +6,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -27,6 +28,18 @@ public class ManagerController {
         tbManagerEntity.setUserId(user_id);
         tbManagerEntity.setJoinTime(tbAssociationEntity.getEstablishTime());
         tbManagerEntity.setStatus(2);
-        managerService.joinClub(tbManagerEntity);
+        managerService.joinClub(tbManagerEntity);\
+        }
          */
+
+    @Autowired
+    public ManagerService managerService;
+
+    @DeleteMapping("/manager")
+    @ResponseBody
+    @ApiOperation("删除一个关联表")
+    public String DeleteManager(Integer as_id,Integer user_id) {
+        managerService.quitClub(as_id,user_id);
+        return("OK");
+    }
 }

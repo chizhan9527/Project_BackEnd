@@ -38,6 +38,6 @@ public class AssociationServiceImpl implements AssociationService {
     }
 
     public Optional<TbAssociationEntity> findUserByName(String name){
-        return associationDao.findByassociationName(name);
+        return associationDao.findByAssociationName(name);
     };
 }
