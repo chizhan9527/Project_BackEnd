@@ -10,4 +10,5 @@ public interface ArticleDao extends JpaRepository<TbArticleEntity,Integer> {
 
     List<TbArticleEntity> findAllByOrderByCreateTimeDesc(Pageable pageable);
 
+    List<TbArticleEntity> findAllByUserIdOrderByCreateTimeDesc(Integer id, Pageable pageable);
 }

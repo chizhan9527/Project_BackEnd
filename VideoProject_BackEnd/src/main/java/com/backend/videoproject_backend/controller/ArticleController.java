@@ -53,4 +53,12 @@ public class ArticleController {
     {
         return articleService.getByPageService(currentPage);
     }
+
+    @GetMapping("/article/page/{id}/{currentPage}")
+    @ResponseBody
+    @ApiOperation("按userid分页查询文章")
+    public List<TbArticleEntity> getArticleByPageAndUserId(@PathVariable Integer id,@PathVariable Integer currentPage)
+    {
+        return articleService.getByPageAndUserIdService(id,currentPage);
+    }
 }
