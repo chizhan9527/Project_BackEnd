@@ -75,8 +75,9 @@ public class ManagerController {
         else {
             Iterator<TbManagerEntity> iterator = ClubMember.listIterator();
             while (iterator.hasNext()) {
-                if (iterator.next().getStatus() >= rank)
-                    tbUserEntities.add(userService.findUserById(iterator.next().getUserId()).get());
+                TbManagerEntity tbManagerEntity=iterator.next();
+                if (tbManagerEntity.getStatus() >= rank)
+                    tbUserEntities.add(userService.findUserById(tbManagerEntity.getUserId()).get());
             }
             return tbUserEntities;
         }

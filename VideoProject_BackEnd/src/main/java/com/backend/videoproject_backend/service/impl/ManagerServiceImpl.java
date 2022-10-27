@@ -31,8 +31,7 @@ public class ManagerServiceImpl implements ManagerService  {
 
     @Override
     public List<TbManagerEntity> ReturnAllMember(Integer as_id){
-        List<TbManagerEntity> tbManagerEntity= managerDao.findAllByAsId(as_id);
-        return tbManagerEntity;
+        return managerDao.findAllByAsId(as_id);
     }
 
     @Override
