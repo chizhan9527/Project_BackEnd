@@ -9,6 +9,11 @@ import com.backend.videoproject_backend.service.ManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class ManagerServiceImpl implements ManagerService  {
 
@@ -22,5 +27,17 @@ public class ManagerServiceImpl implements ManagerService  {
     @Override
     public void quitClub(Integer as_id,Integer user_id){
         managerDao.deleteByAsIdAndUserId(as_id,user_id);
+    }
+
+    @Override
+    public List<TbManagerEntity> ReturnAllMember(Integer as_id){
+        List<TbManagerEntity> tbManagerEntity= managerDao.findAllByAsId(as_id);
+        return tbManagerEntity;
+    }
+
+    @Override
+    public TbManagerEntity ReturnOneMember(Integer as_id,Integer user_id)
+    {
+        return managerDao.findByAsIdAndUserId(as_id,user_id);
     }
 }
