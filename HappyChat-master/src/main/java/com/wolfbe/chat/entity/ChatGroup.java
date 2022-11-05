@@ -31,9 +31,11 @@ public class ChatGroup {
         rabbitManager.getRabbit().create_queue("member_name");
         System.out.println(member_name+"建立成功!");
     }
-    public boolean add_user(UserInfo member){
+    public boolean add_user(UserInfo member) throws IOException, TimeoutException {
         if(group_members.add(member)){
             online_member+=1;
+            //将新成员加入rabbitmq消息队列中
+            rabbitManager.getRabbit().create_queue(member.getNick());
             return true;
         }
         else
@@ -54,7 +56,7 @@ public class ChatGroup {
                     Channel ch=mid.getChannel();
                     if (!ch.isOpen() || !ch.isActive())  //此时用户处于离线状态,则将数据发送至rabbitmq中
                     {
-                        rabbitManager.getRabbit().sendMessage(group_name,message);
+                        rabbitManager.getRabbit().sendMessage(nick_name,message);
                     }
                     else
                     ch.writeAndFlush(new TextWebSocketFrame(ChatProto.buildMessProto(user_id,nick_name,message)));
