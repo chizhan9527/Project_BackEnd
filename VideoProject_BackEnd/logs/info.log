@@ -1,84 +1,161 @@
-2022-10-12 00:40:44.231 INFO  17832 --- [main] c.b.v.VideoProjectBackEndApplication - Starting VideoProjectBackEndApplication using Java 17.0.4.1 on LAPTOP-2IBH3GJ5 with PID 17832 (D:\VideoProject\VideoProject_BackEnd\VideoProject_BackEnd\target\classes started by zhanz in D:\VideoProject\VideoProject_BackEnd\VideoProject_BackEnd)
-2022-10-12 00:40:44.233 INFO  17832 --- [main] c.b.v.VideoProjectBackEndApplication - The following 1 profile is active: "dev"
-2022-10-12 00:40:44.686 INFO  17832 --- [main] o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-2022-10-12 00:40:44.687 INFO  17832 --- [main] o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2022-10-12 00:40:44.786 INFO  17832 --- [main] o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 92 ms. Found 3 JPA repository interfaces.
-2022-10-12 00:40:44.919 INFO  17832 --- [main] o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-2022-10-12 00:40:44.919 INFO  17832 --- [main] o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2022-10-12 00:40:44.931 INFO  17832 --- [main] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.backend.videoproject_backend.dao.AssociationDao; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2022-10-12 00:40:44.931 INFO  17832 --- [main] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.backend.videoproject_backend.dao.TestDao; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2022-10-12 00:40:44.932 INFO  17832 --- [main] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.backend.videoproject_backend.dao.UserDao; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2022-10-12 00:40:44.932 INFO  17832 --- [main] o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 6 ms. Found 0 Redis repository interfaces.
-2022-10-12 00:40:45.340 INFO  17832 --- [main] o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
-2022-10-12 00:40:45.351 INFO  17832 --- [main] org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
-2022-10-12 00:40:45.352 INFO  17832 --- [main] org.apache.catalina.core.StandardService - Starting service [Tomcat]
-2022-10-12 00:40:45.352 INFO  17832 --- [main] org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.65]
-2022-10-12 00:40:45.483 INFO  17832 --- [main] o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2022-10-12 00:40:45.484 INFO  17832 --- [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1218 ms
-2022-10-12 00:40:45.617 INFO  17832 --- [main] org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2022-10-12 00:40:45.650 INFO  17832 --- [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.10.Final
-2022-10-12 00:40:45.760 INFO  17832 --- [main] org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2022-10-12 00:40:45.831 INFO  17832 --- [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2022-10-12 00:40:46.250 INFO  17832 --- [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2022-10-12 00:40:46.260 INFO  17832 --- [main] org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
-2022-10-12 00:40:47.358 INFO  17832 --- [main] o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2022-10-12 00:40:47.364 INFO  17832 --- [main] o.s.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2022-10-12 00:40:47.869 WARN  17832 --- [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2022-10-12 00:40:47.947 INFO  17832 --- [main] s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2022-10-12 00:40:48.098 WARN  17832 --- [main] o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration - Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
-2022-10-12 00:40:48.394 INFO  17832 --- [main] org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
-2022-10-12 00:40:48.409 INFO  17832 --- [main] o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
-2022-10-12 00:40:48.410 INFO  17832 --- [main] s.d.s.web.plugins.DocumentationPluginsBootstrapper - Context refreshed
-2022-10-12 00:40:48.423 INFO  17832 --- [main] s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
-2022-10-12 00:40:48.443 INFO  17832 --- [main] s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
-2022-10-12 00:40:48.522 INFO  17832 --- [main] s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: doLoginUsingPOST_1
-2022-10-12 00:40:48.525 INFO  17832 --- [main] s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: isLoginUsingGET_1
-2022-10-12 00:40:48.548 INFO  17832 --- [main] c.b.v.VideoProjectBackEndApplication - Started VideoProjectBackEndApplication in 4.621 seconds (JVM running for 5.326)
-2022-10-12 00:40:57.668 INFO  17832 --- [http-nio-8081-exec-1] o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-10-12 00:40:57.668 INFO  17832 --- [http-nio-8081-exec-1] org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2022-10-12 00:40:57.669 INFO  17832 --- [http-nio-8081-exec-1] org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
-2022-10-12 00:41:25.196 INFO  17832 --- [SpringApplicationShutdownHook] o.s.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2022-10-12 00:41:25.197 INFO  17832 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2022-10-12 00:41:25.201 INFO  17832 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-2022-10-12 00:42:58.998 INFO  36684 --- [main] c.b.v.VideoProjectBackEndApplication - Starting VideoProjectBackEndApplication using Java 17.0.4.1 on LAPTOP-2IBH3GJ5 with PID 36684 (D:\VideoProject\VideoProject_BackEnd\VideoProject_BackEnd\target\classes started by zhanz in D:\VideoProject\VideoProject_BackEnd\VideoProject_BackEnd)
-2022-10-12 00:42:59.001 INFO  36684 --- [main] c.b.v.VideoProjectBackEndApplication - The following 1 profile is active: "dev"
-2022-10-12 00:42:59.486 INFO  36684 --- [main] o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-2022-10-12 00:42:59.486 INFO  36684 --- [main] o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2022-10-12 00:42:59.592 INFO  36684 --- [main] o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 99 ms. Found 3 JPA repository interfaces.
-2022-10-12 00:42:59.737 INFO  36684 --- [main] o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-2022-10-12 00:42:59.738 INFO  36684 --- [main] o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2022-10-12 00:42:59.750 INFO  36684 --- [main] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.backend.videoproject_backend.dao.AssociationDao; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2022-10-12 00:42:59.750 INFO  36684 --- [main] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.backend.videoproject_backend.dao.TestDao; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2022-10-12 00:42:59.751 INFO  36684 --- [main] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.backend.videoproject_backend.dao.UserDao; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2022-10-12 00:42:59.751 INFO  36684 --- [main] o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 6 ms. Found 0 Redis repository interfaces.
-2022-10-12 00:43:00.202 INFO  36684 --- [main] o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
-2022-10-12 00:43:00.209 INFO  36684 --- [main] org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
-2022-10-12 00:43:00.209 INFO  36684 --- [main] org.apache.catalina.core.StandardService - Starting service [Tomcat]
-2022-10-12 00:43:00.209 INFO  36684 --- [main] org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.65]
-2022-10-12 00:43:00.354 INFO  36684 --- [main] o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2022-10-12 00:43:00.355 INFO  36684 --- [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1319 ms
-2022-10-12 00:43:00.503 INFO  36684 --- [main] org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2022-10-12 00:43:00.540 INFO  36684 --- [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.10.Final
-2022-10-12 00:43:00.659 INFO  36684 --- [main] org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2022-10-12 00:43:00.735 INFO  36684 --- [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2022-10-12 00:43:01.154 INFO  36684 --- [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2022-10-12 00:43:01.164 INFO  36684 --- [main] org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
-2022-10-12 00:43:02.324 INFO  36684 --- [main] o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2022-10-12 00:43:02.330 INFO  36684 --- [main] o.s.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2022-10-12 00:43:02.851 WARN  36684 --- [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2022-10-12 00:43:02.934 INFO  36684 --- [main] s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2022-10-12 00:43:03.094 WARN  36684 --- [main] o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration - Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
-2022-10-12 00:43:03.404 INFO  36684 --- [main] org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
-2022-10-12 00:43:03.420 INFO  36684 --- [main] o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
-2022-10-12 00:43:03.421 INFO  36684 --- [main] s.d.s.web.plugins.DocumentationPluginsBootstrapper - Context refreshed
-2022-10-12 00:43:03.435 INFO  36684 --- [main] s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
-2022-10-12 00:43:03.456 INFO  36684 --- [main] s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
-2022-10-12 00:43:03.544 INFO  36684 --- [main] s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: doLoginUsingPOST_1
-2022-10-12 00:43:03.548 INFO  36684 --- [main] s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: isLoginUsingGET_1
-2022-10-12 00:43:03.572 INFO  36684 --- [main] c.b.v.VideoProjectBackEndApplication - Started VideoProjectBackEndApplication in 4.896 seconds (JVM running for 5.64)
-2022-10-12 00:43:13.952 INFO  36684 --- [http-nio-8081-exec-1] o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-10-12 00:43:13.953 INFO  36684 --- [http-nio-8081-exec-1] org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2022-10-12 00:43:13.953 INFO  36684 --- [http-nio-8081-exec-1] org.springframework.web.servlet.DispatcherServlet - Completed initialization in 0 ms
-2022-10-12 00:43:28.963 INFO  36684 --- [SpringApplicationShutdownHook] o.s.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2022-10-12 00:43:28.964 INFO  36684 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2022-10-12 00:43:28.968 INFO  36684 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2022-11-03 20:04:26.072 INFO  28092 --- [main] c.b.v.VideoProjectBackEndApplication - Starting VideoProjectBackEndApplication using Java 17.0.3 on LAPTOP-1DDPVKSD with PID 28092 (D:\javaPro\VideoProject_BackEnd\VideoProject_BackEnd\target\classes started by 86155 in D:\javaPro\VideoProject_BackEnd\VideoProject_BackEnd)
+2022-11-03 20:04:26.077 INFO  28092 --- [main] c.b.v.VideoProjectBackEndApplication - The following 1 profile is active: "dev"
+2022-11-03 20:04:27.021 INFO  28092 --- [main] o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2022-11-03 20:04:27.023 INFO  28092 --- [main] o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-11-03 20:04:27.979 INFO  28092 --- [main] o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 925 ms. Found 6 JPA repository interfaces.
+2022-11-03 20:04:28.272 INFO  28092 --- [main] o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2022-11-03 20:04:28.273 INFO  28092 --- [main] o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-11-03 20:04:28.299 INFO  28092 --- [main] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.backend.videoproject_backend.dao.ArticleDao; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2022-11-03 20:04:28.300 INFO  28092 --- [main] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.backend.videoproject_backend.dao.AssociationDao; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2022-11-03 20:04:28.300 INFO  28092 --- [main] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.backend.videoproject_backend.dao.FollowDao; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2022-11-03 20:04:28.301 INFO  28092 --- [main] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.backend.videoproject_backend.dao.RecordDao; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2022-11-03 20:04:28.301 INFO  28092 --- [main] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.backend.videoproject_backend.dao.TestDao; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2022-11-03 20:04:28.302 INFO  28092 --- [main] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.backend.videoproject_backend.dao.UserDao; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2022-11-03 20:04:28.302 INFO  28092 --- [main] o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 13 ms. Found 0 Redis repository interfaces.
+2022-11-03 20:04:28.518 INFO  28092 --- [main] o.s.i.c.DefaultConfiguringBeanFactoryPostProcessor - No bean named 'errorChannel' has been explicitly defined. Therefore, a default PublishSubscribeChannel will be created.
+2022-11-03 20:04:28.543 INFO  28092 --- [main] o.s.i.c.DefaultConfiguringBeanFactoryPostProcessor - No bean named 'integrationHeaderChannelRegistry' has been explicitly defined. Therefore, a default DefaultHeaderChannelRegistry will be created.
+2022-11-03 20:04:28.896 INFO  28092 --- [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.integration.config.IntegrationManagementConfiguration' of type [org.springframework.integration.config.IntegrationManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-11-03 20:04:28.909 INFO  28092 --- [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'integrationChannelResolver' of type [org.springframework.integration.support.channel.BeanFactoryChannelResolver] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-11-03 20:04:29.813 INFO  28092 --- [main] o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2022-11-03 20:04:29.848 INFO  28092 --- [main] org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2022-11-03 20:04:29.849 INFO  28092 --- [main] org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2022-11-03 20:04:29.850 INFO  28092 --- [main] org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-11-03 20:04:30.292 INFO  28092 --- [main] o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-11-03 20:04:30.292 INFO  28092 --- [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 4161 ms
+2022-11-03 20:04:30.501 INFO  28092 --- [main] org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-11-03 20:04:30.566 INFO  28092 --- [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.10.Final
+2022-11-03 20:04:30.754 INFO  28092 --- [main] org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-11-03 20:04:31.056 INFO  28092 --- [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2022-11-03 20:04:31.603 INFO  28092 --- [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2022-11-03 20:04:31.622 INFO  28092 --- [main] org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-11-03 20:04:33.259 INFO  28092 --- [main] o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-11-03 20:04:33.267 INFO  28092 --- [main] o.s.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-11-03 20:04:34.369 WARN  28092 --- [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-11-03 20:04:34.497 INFO  28092 --- [main] s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-11-03 20:04:34.752 WARN  28092 --- [main] o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration - Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2022-11-03 20:04:35.354 INFO  28092 --- [main] o.s.integration.endpoint.EventDrivenConsumer - Adding {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+2022-11-03 20:04:35.354 INFO  28092 --- [main] o.s.integration.channel.PublishSubscribeChannel - Channel 'application.errorChannel' has 1 subscriber(s).
+2022-11-03 20:04:35.354 INFO  28092 --- [main] o.s.integration.endpoint.EventDrivenConsumer - started bean '_org.springframework.integration.errorLogger'
+2022-11-03 20:04:35.355 INFO  28092 --- [main] org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2022-11-03 20:04:35.367 INFO  28092 --- [main] o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+2022-11-03 20:04:35.367 INFO  28092 --- [main] s.d.s.web.plugins.DocumentationPluginsBootstrapper - Context refreshed
+2022-11-03 20:04:35.385 INFO  28092 --- [main] s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2022-11-03 20:04:35.414 INFO  28092 --- [main] s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2022-11-03 20:04:35.585 INFO  28092 --- [main] s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: doLoginUsingPOST_1
+2022-11-03 20:04:35.593 INFO  28092 --- [main] s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: isLoginUsingGET_1
+2022-11-03 20:04:35.642 INFO  28092 --- [main] c.b.v.VideoProjectBackEndApplication - Started VideoProjectBackEndApplication in 10.05 seconds (JVM running for 11.238)
+2022-11-03 20:04:35.971 INFO  28092 --- [main] c.b.videoproject_backend.utils.netty.SocketServer - Netty started on port: 8088 (TCP) with boss thread 1
+2022-11-03 20:04:40.677 INFO  28092 --- [http-nio-8081-exec-1] o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-11-03 20:04:40.677 INFO  28092 --- [http-nio-8081-exec-1] org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2022-11-03 20:04:40.679 INFO  28092 --- [http-nio-8081-exec-1] org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2022-11-03 20:34:23.832 WARN  28092 --- [http-nio-8081-exec-1] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@74d74c9a (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-11-03 20:34:28.834 WARN  28092 --- [http-nio-8081-exec-1] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@72ee4691 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-11-03 20:34:33.837 WARN  28092 --- [http-nio-8081-exec-1] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@4a9c0fce (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-11-03 21:04:01.004 WARN  28092 --- [http-nio-8081-exec-3] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@5baad71d (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-11-03 21:04:06.018 WARN  28092 --- [http-nio-8081-exec-3] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@63596199 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-11-03 21:04:11.028 WARN  28092 --- [http-nio-8081-exec-3] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@36f12d2b (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-11-03 21:04:16.033 WARN  28092 --- [http-nio-8081-exec-3] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@251034a1 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-11-03 21:04:21.035 WARN  28092 --- [http-nio-8081-exec-3] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@512922cf (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-11-03 21:04:26.040 WARN  28092 --- [http-nio-8081-exec-3] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@16ff2abf (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2022-11-03 21:04:26.041 WARN  28092 --- [http-nio-8081-exec-3] org.hibernate.engine.jdbc.spi.SqlExceptionHelper - SQL Error: 0, SQLState: 08003
+2022-11-03 21:04:26.042 ERROR 28092 --- [http-nio-8081-exec-3] org.hibernate.engine.jdbc.spi.SqlExceptionHelper - HikariPool-1 - Connection is not available, request timed out after 30040ms.
+2022-11-03 21:04:26.044 ERROR 28092 --- [http-nio-8081-exec-3] org.hibernate.engine.jdbc.spi.SqlExceptionHelper - No operations allowed after connection closed.
+2022-11-03 21:04:26.052 ERROR 28092 --- [http-nio-8081-exec-3] o.a.c.c.C.[.[localhost].[/].[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.RuntimeException: org.springframework.transaction.CannotCreateTransactionException: Could not open JPA EntityManager for transaction; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to acquire JDBC Connection] with root cause
+com.mysql.cj.exceptions.ConnectionIsClosedException: No operations allowed after connection closed.
+	at jdk.internal.reflect.GeneratedConstructorAccessor68.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:151)
+	at com.mysql.cj.NativeSession.checkClosed(NativeSession.java:761)
+	at com.mysql.cj.jdbc.ConnectionImpl.checkClosed(ConnectionImpl.java:568)
+	at com.mysql.cj.jdbc.ConnectionImpl.setNetworkTimeout(ConnectionImpl.java:2481)
+	at com.zaxxer.hikari.pool.PoolBase.setNetworkTimeout(PoolBase.java:566)
+	at com.zaxxer.hikari.pool.PoolBase.isConnectionAlive(PoolBase.java:173)
+	at com.zaxxer.hikari.pool.HikariPool.getConnection(HikariPool.java:186)
+	at com.zaxxer.hikari.pool.HikariPool.getConnection(HikariPool.java:162)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:128)
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:122)
+	at org.hibernate.internal.NonContextualJdbcConnectionAccess.obtainConnection(NonContextualJdbcConnectionAccess.java:38)
+	at org.hibernate.resource.jdbc.internal.LogicalConnectionManagedImpl.acquireConnectionIfNeeded(LogicalConnectionManagedImpl.java:108)
+	at org.hibernate.resource.jdbc.internal.LogicalConnectionManagedImpl.getPhysicalConnection(LogicalConnectionManagedImpl.java:138)
+	at org.hibernate.internal.SessionImpl.connection(SessionImpl.java:516)
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.beginTransaction(HibernateJpaDialect.java:152)
+	at org.springframework.orm.jpa.JpaTransactionManager.doBegin(JpaTransactionManager.java:421)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.startTransaction(AbstractPlatformTransactionManager.java:400)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.getTransaction(AbstractPlatformTransactionManager.java:373)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.createTransactionIfNecessary(TransactionAspectSupport.java:595)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:382)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:174)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215)
+	at jdk.proxy2/jdk.proxy2.$Proxy128.findById(Unknown Source)
+	at com.backend.videoproject_backend.service.impl.UserServiceImpl.findUserById(UserServiceImpl.java:45)
+	at com.backend.videoproject_backend.controller.UserController.FindOneUser(UserController.java:74)
+	at jdk.internal.reflect.GeneratedMethodAccessor107.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1070)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:655)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1789)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2022-11-03 21:19:36.536 INFO  28092 --- [SpringApplicationShutdownHook] o.s.integration.endpoint.EventDrivenConsumer - Removing {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+2022-11-03 21:19:36.536 INFO  28092 --- [SpringApplicationShutdownHook] o.s.integration.channel.PublishSubscribeChannel - Channel 'application.errorChannel' has 0 subscriber(s).
+2022-11-03 21:19:36.536 INFO  28092 --- [SpringApplicationShutdownHook] o.s.integration.endpoint.EventDrivenConsumer - stopped bean '_org.springframework.integration.errorLogger'
+2022-11-03 21:19:36.660 INFO  28092 --- [SpringApplicationShutdownHook] o.s.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-11-03 21:19:36.662 INFO  28092 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2022-11-03 21:19:36.664 INFO  28092 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

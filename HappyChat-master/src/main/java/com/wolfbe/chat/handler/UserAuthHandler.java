@@ -16,6 +16,9 @@ import io.netty.handler.timeout.IdleStateEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
+import java.util.concurrent.TimeoutException;
+
 /**
  * @author Andy
  * @site http://www.wolfbe.com
@@ -28,6 +31,7 @@ public class UserAuthHandler extends SimpleChannelInboundHandler<Object> {
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
+        System.out.println("接收到信息");
         if (msg instanceof FullHttpRequest) {
             handleHttpRequest(ctx, (FullHttpRequest) msg);
         } else if (msg instanceof WebSocketFrame) {
@@ -71,7 +75,7 @@ public class UserAuthHandler extends SimpleChannelInboundHandler<Object> {
         }
     }
 
-    private void handleWebSocket(ChannelHandlerContext ctx, WebSocketFrame frame) {
+    private void handleWebSocket(ChannelHandlerContext ctx, WebSocketFrame frame) throws IOException, TimeoutException {
         // 判断是否关闭链路命令
         if (frame instanceof CloseWebSocketFrame) {
             handshaker.close(ctx.channel(), (CloseWebSocketFrame) frame.retain());

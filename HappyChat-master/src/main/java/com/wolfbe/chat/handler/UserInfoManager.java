@@ -3,6 +3,7 @@ package com.wolfbe.chat.handler;
 import com.wolfbe.chat.entity.ChatGroup;
 import com.wolfbe.chat.entity.UserInfo;
 import com.wolfbe.chat.proto.ChatProto;
+import com.wolfbe.chat.rabbit.rabbit;
 import com.wolfbe.chat.util.BlankUtil;
 import com.wolfbe.chat.util.NettyUtil;
 import io.netty.channel.Channel;
@@ -10,10 +11,12 @@ import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.TimeoutException;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
@@ -32,6 +35,7 @@ public class UserInfoManager {
 
     private static HashMap<Integer, ChatGroup> groups=new HashMap<>();
     private static AtomicInteger userCount = new AtomicInteger(0);
+
 
     public static void addChannel(Channel channel) {
         String remoteAddr = NettyUtil.parseChannelRemoteAddr(channel);
