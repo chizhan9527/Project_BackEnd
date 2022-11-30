@@ -937,3 +937,9 @@ java.util.NoSuchElementException: null
 2022-10-27 21:23:03.715 INFO  11884 --- [http-nio-8081-exec-1] o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
 2022-10-27 21:23:03.715 INFO  11884 --- [http-nio-8081-exec-1] org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
 2022-10-27 21:23:03.717 INFO  11884 --- [http-nio-8081-exec-1] org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2022-10-27 21:25:18.733 INFO  11884 --- [SpringApplicationShutdownHook] o.s.integration.endpoint.EventDrivenConsumer - Removing {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+2022-10-27 21:25:18.733 INFO  11884 --- [SpringApplicationShutdownHook] o.s.integration.channel.PublishSubscribeChannel - Channel 'application.errorChannel' has 0 subscriber(s).
+2022-10-27 21:25:18.733 INFO  11884 --- [SpringApplicationShutdownHook] o.s.integration.endpoint.EventDrivenConsumer - stopped bean '_org.springframework.integration.errorLogger'
+2022-10-27 21:25:18.746 INFO  11884 --- [SpringApplicationShutdownHook] o.s.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-27 21:25:18.747 INFO  11884 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2022-10-27 21:25:18.751 INFO  11884 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
