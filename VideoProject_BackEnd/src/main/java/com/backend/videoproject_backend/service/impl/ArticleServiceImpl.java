@@ -2,8 +2,12 @@ package com.backend.videoproject_backend.service.impl;
 
 import cn.dev33.satoken.stp.StpUtil;
 import com.backend.videoproject_backend.dao.ArticleDao;
+import com.backend.videoproject_backend.dao.FollowDao;
+import com.backend.videoproject_backend.dao.LikeDao;
 import com.backend.videoproject_backend.dao.UserDao;
 import com.backend.videoproject_backend.dto.TbArticleEntity;
+import com.backend.videoproject_backend.dto.TbFollowEntity;
+import com.backend.videoproject_backend.dto.TbLikeEntity;
 import com.backend.videoproject_backend.dto.TbUserEntity;
 import com.backend.videoproject_backend.service.ArticleService;
 import lombok.extern.slf4j.Slf4j;
@@ -30,6 +34,12 @@ public class ArticleServiceImpl implements ArticleService {
     private UserDao userDao;
 
     @Autowired
+    private FollowDao followDao;
+
+    @Autowired
+    private LikeDao likeDao;
+
+    @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
     @Override
@@ -42,14 +52,21 @@ public class ArticleServiceImpl implements ArticleService {
         //如果未点赞可以点赞
         //数据库相应字段加一
         //保存到redis的set中
+        Optional<TbArticleEntity> articleEntity = articleDao.findById(id);
         if (Boolean.FALSE.equals(isMember)) {
             //进行isPresent检查
-            Optional<TbArticleEntity> articleEntity = articleDao.findById(id);
             if (articleEntity.isPresent()) {
                 TbArticleEntity tbArticleEntity = articleEntity.get();
                 tbArticleEntity.setLikes(tbArticleEntity.getLikes() + 1);
                 articleDao.save(tbArticleEntity);
                 stringRedisTemplate.opsForSet().add(key, Integer.toString(user_id));
+
+                //存储到like表中
+                TbLikeEntity tbLikeEntity = new TbLikeEntity();
+                tbLikeEntity.setUserId(user_id);
+                tbLikeEntity.setArticleId(id);
+                tbLikeEntity.setCreateTime(new Timestamp(new Date().getTime()));
+                likeDao.save(tbLikeEntity);
                 return "点赞成功";
             } else {
                 return "文章不存在";
@@ -60,12 +77,15 @@ public class ArticleServiceImpl implements ArticleService {
         //从redis的set中删除
         else {
             //进行isPresent检查
-            Optional<TbArticleEntity> articleEntity = articleDao.findById(id);
             if (articleEntity.isPresent()) {
                 TbArticleEntity tbArticleEntity = articleEntity.get();
                 tbArticleEntity.setLikes(tbArticleEntity.getLikes() - 1);
                 articleDao.save(tbArticleEntity);
                 stringRedisTemplate.opsForSet().remove(key, Integer.toString(user_id));
+
+                //从like表中删除
+                TbLikeEntity tbLikeEntity = likeDao.findByUserIdAndArticleId(user_id, id);
+                likeDao.delete(tbLikeEntity);
                 return "取消点赞成功";
             } else {
                 return "文章不存在";
@@ -119,7 +139,22 @@ public class ArticleServiceImpl implements ArticleService {
         //设置时间
         tbArticleEntity.setCreateTime(new Timestamp(new Date().getTime()));
         tbArticleEntity.setType("article");
-        articleDao.save(tbArticleEntity);
+        try{
+            articleDao.save(tbArticleEntity);
+        }catch (Exception e) {
+            log.error("保存文章失败");
+        }
+        //查询article作者粉丝
+        List<TbFollowEntity> followEntityList = followDao.findAllByFollowerId(user_id);
+        //推送笔记id给所有粉丝
+        for(TbFollowEntity followEntity : followEntityList)
+        {
+            //获取粉丝userId
+            int userId = followEntity.getUserId();
+            //推送
+            String key = "feed:" + userId;
+            stringRedisTemplate.opsForZSet().add(key, Integer.toString(tbArticleEntity.getId()), tbArticleEntity.getCreateTime().getTime());
+        }
     }
 
 

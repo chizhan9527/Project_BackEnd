@@ -1,7 +1,8 @@
 package com.backend.videoproject_backend.controller;
 
-import com.backend.videoproject_backend.dto.TbAssociationEntity;
 import com.backend.videoproject_backend.dto.TbRecordEntity;
+
+import com.backend.videoproject_backend.dto.VUserRecordEntity;
 import com.backend.videoproject_backend.service.RecordService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 @Slf4j
 @Controller
@@ -60,4 +60,15 @@ public class RecordController {
         }
     }
 
+    @GetMapping("/record")
+    @ResponseBody
+    @ApiOperation("查找跑步总排名")
+    public List<VUserRecordEntity> GetRecord()
+    {
+        try{
+            return recordService.findUserRecordDesc();
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
+    }
 }

@@ -1,8 +1,12 @@
 package com.wolfbe.chat;
 
+import com.wolfbe.chat.rabbit.rabbitManager;
 import com.wolfbe.chat.util.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
+import java.util.concurrent.TimeoutException;
 
 /**
  * WebSocket聊天室，客户端参考docs目录下的websocket.html
@@ -13,7 +17,7 @@ import org.slf4j.LoggerFactory;
 public class HappyChatMain {
     private static final Logger logger = LoggerFactory.getLogger(HappyChatMain.class);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, TimeoutException {
         final HappyChatServer server = new HappyChatServer(Constants.DEFAULT_PORT);
         server.init();
         server.start();

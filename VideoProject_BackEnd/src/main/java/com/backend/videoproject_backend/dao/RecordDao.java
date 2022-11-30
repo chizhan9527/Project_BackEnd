@@ -14,5 +14,7 @@ import java.util.Optional;
 public interface RecordDao extends JpaRepository<TbRecordEntity,Integer> {
     List<TbRecordEntity> findByUserId(int userId);
 
+
+
 }
 

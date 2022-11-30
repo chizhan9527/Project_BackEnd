@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.backend.videoproject_backend.dto.VUserRecordEntity" table="v_user_record" schema="bili">
+        <property name="userId" column="user_id"/>
+        <property name="userName" column="user_name"/>
+        <property name="sumDistance" column="sum_distance"/>
+    </class>
+</hibernate-mapping>
