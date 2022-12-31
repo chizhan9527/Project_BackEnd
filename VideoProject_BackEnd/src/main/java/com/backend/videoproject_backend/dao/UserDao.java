@@ -14,7 +14,7 @@ import java.util.Optional;
  */
 public interface UserDao extends JpaRepository<TbUserEntity,Integer> {
     Optional<TbUserEntity> findByName(String name);
-
+    //数据持久类
     Optional<TbUserEntity> findByPhone(String phone);
 
 }

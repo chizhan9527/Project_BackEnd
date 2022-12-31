@@ -1,5 +1,6 @@
 package com.backend.videoproject_backend.controller;
 
+import com.backend.videoproject_backend.dto.TbPhysicalEntity;
 import com.backend.videoproject_backend.dto.TbUserEntity;
 import com.backend.videoproject_backend.service.UserService;
 import io.swagger.annotations.Api;
@@ -100,6 +101,18 @@ public class UserController {
                 return "error";
             }
     }catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @GetMapping("/physical/{id}")
+    @ResponseBody
+    @ApiOperation("查询一名用户身体数据")
+    public Optional<TbPhysicalEntity> FindPhysical(@PathVariable Integer id)
+    {
+        try {
+            return userService.findPhysicalByUserId(id);
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
