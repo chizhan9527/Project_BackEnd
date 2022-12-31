@@ -70,4 +70,9 @@ public class UserServiceImpl implements UserService {
     public Optional<TbPhysicalEntity> findPhysicalByUserId(Integer id) {
         return physicalDao.findByUserId(id);
     }
+
+    @Override
+    public void addPhysical(TbPhysicalEntity tbPhysicalEntity) {
+        physicalDao.save(tbPhysicalEntity);
+    }
 }

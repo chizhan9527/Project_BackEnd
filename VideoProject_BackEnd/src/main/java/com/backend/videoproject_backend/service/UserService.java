@@ -27,4 +27,6 @@ public interface UserService {
     Optional<TbUserEntity> findUserByPhone(String phone);
 
     Optional<TbPhysicalEntity> findPhysicalByUserId(Integer id);
+
+    void addPhysical(TbPhysicalEntity tbPhysicalEntity);
 }
