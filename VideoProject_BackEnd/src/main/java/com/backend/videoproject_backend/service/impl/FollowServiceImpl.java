@@ -4,8 +4,10 @@ import cn.dev33.satoken.stp.StpUtil;
 import com.backend.videoproject_backend.dao.FollowDao;
 import com.backend.videoproject_backend.dao.UserDao;
 import com.backend.videoproject_backend.dto.TbFollowEntity;
+import com.backend.videoproject_backend.dto.TbLikeEntity;
 import com.backend.videoproject_backend.dto.TbUserEntity;
 import com.backend.videoproject_backend.service.FollowService;
+import com.backend.videoproject_backend.vo.FollowBox;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -83,6 +85,28 @@ public class FollowServiceImpl implements FollowService {
                 }
         );
         return tbUserEntityList;
+    }
+
+    @Override
+    public List<FollowBox> getFollowInfo(Integer id) {
+        // 存储followBox的结果
+        List<FollowBox> followBoxList = new ArrayList<>();
+        // 用id查到所有的关注表实体
+        List<TbFollowEntity> tbFollowEntityList = followDao.findAllByUserId(id);
+        // 取得follow_id的idList
+        List<Integer> ids = tbFollowEntityList.stream().map(TbFollowEntity::getFollowerId).toList();
+        ids.forEach(
+                i ->{
+                    Optional<TbUserEntity> userEntity = userDao.findById(i);
+                    if(userEntity.isPresent()){
+                        FollowBox followBox = new FollowBox();
+                        followBox.setName(userEntity.get().getName());
+                        followBox.setAvatar(userEntity.get().getAvator());
+                        followBoxList.add(followBox);
+                    }
+                }
+        );
+        return followBoxList;
     }
 
     private Boolean isFollow(Integer followUserId) {

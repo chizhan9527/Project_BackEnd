@@ -44,6 +44,8 @@
       <mapping resource="VUserRecordEntity.hbm.xml"/>
       <mapping class="com.backend.videoproject_backend.dto.TbPhysicalEntity"/>
       <mapping resource="hbmxml/TbPhysicalEntity.hbm.xml"/>
+      <mapping resource="hbmxml/TbFeedbackEntity.hbm.xml"/>
+      <mapping class="com.backend.videoproject_backend.dto.TbFeedbackEntity"/>
       <!-- <property name="connection.password"/> -->
 
     <!-- DB schema will be updated if needed -->

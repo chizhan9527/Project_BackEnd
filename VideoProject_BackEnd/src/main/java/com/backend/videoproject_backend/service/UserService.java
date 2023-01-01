@@ -1,4 +1,5 @@
 package com.backend.videoproject_backend.service;
+import com.backend.videoproject_backend.dto.TbFeedbackEntity;
 import com.backend.videoproject_backend.dto.TbPhysicalEntity;
 import com.backend.videoproject_backend.dto.TbUserEntity;
 
@@ -29,4 +30,6 @@ public interface UserService {
     Optional<TbPhysicalEntity> findPhysicalByUserId(Integer id);
 
     void addPhysical(TbPhysicalEntity tbPhysicalEntity);
+
+    void postFeedback(TbFeedbackEntity tbFeedbackEntity);
 }

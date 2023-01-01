@@ -1,6 +1,8 @@
 package com.backend.videoproject_backend.controller;
 
+import com.backend.videoproject_backend.dao.FeedbackDao;
 import com.backend.videoproject_backend.dao.PhysicalDao;
+import com.backend.videoproject_backend.dto.TbFeedbackEntity;
 import com.backend.videoproject_backend.dto.TbPhysicalEntity;
 import com.backend.videoproject_backend.dto.TbUserEntity;
 import com.backend.videoproject_backend.service.UserService;
@@ -23,8 +25,9 @@ public class UserController {
 
     @Autowired
     public UserService userService;
+
     @Autowired
-    private PhysicalDao physicalDao;
+    public FeedbackDao feedbackDao;
 
     @PostMapping("/user")
     @ResponseBody
@@ -153,4 +156,23 @@ public class UserController {
             throw new RuntimeException(e);
         }
     }
+
+    @PostMapping("/feedback")
+    @ResponseBody
+    @ApiOperation("创建一个用户反馈")
+    public String postFeedback(Integer id,String content)
+    {
+        try{
+            TbFeedbackEntity tbFeedbackEntity = new TbFeedbackEntity();
+            tbFeedbackEntity.setContent(content);
+            tbFeedbackEntity.setUserId(id);
+            tbFeedbackEntity.setCreateTime(new Timestamp(new Date().getTime()));
+            userService.postFeedback(tbFeedbackEntity);
+            return "ok";
+        }catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
 }
