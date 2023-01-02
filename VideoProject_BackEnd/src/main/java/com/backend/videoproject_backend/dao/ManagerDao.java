@@ -17,4 +17,7 @@ public interface ManagerDao extends JpaRepository<TbManagerEntity,Integer>{
 
     @Transactional
     TbManagerEntity findByAsIdAndUserId(Integer as_id,Integer user_id);
+
+    @Transactional
+    List<TbManagerEntity> findAllByUserId(Integer user_id);
 }

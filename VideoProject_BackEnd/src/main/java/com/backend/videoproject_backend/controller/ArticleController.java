@@ -2,12 +2,14 @@ package com.backend.videoproject_backend.controller;
 
 import com.backend.videoproject_backend.dto.TbArticleEntity;
 import com.backend.videoproject_backend.service.ArticleService;
+import com.backend.videoproject_backend.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,6 +19,9 @@ public class ArticleController {
 
     @Autowired
     public ArticleService articleService;
+
+    @Autowired
+    public UserService userService;
 
     @PostMapping("/article")
     @ResponseBody
@@ -59,6 +64,13 @@ public class ArticleController {
     @ApiOperation("按userid分页查询文章")
     public List<TbArticleEntity> getArticleByPageAndUserId(@PathVariable Integer id,@PathVariable Integer currentPage)
     {
-        return articleService.getByPageAndUserIdService(id,currentPage);
+        List<TbArticleEntity>tbArticleEntityList=articleService.getByPageAndUserIdService(id,currentPage);
+        Iterator<TbArticleEntity> iterator=tbArticleEntityList.iterator();
+        while(iterator.hasNext())
+        {
+            TbArticleEntity tbArticleEntity=iterator.next();
+            tbArticleEntity.setName(userService.findUserById(tbArticleEntity.getUserId()).get().getName());
+        }
+        return tbArticleEntityList;
     }
 }
