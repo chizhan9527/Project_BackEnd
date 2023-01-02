@@ -1,5 +1,6 @@
 package com.backend.videoproject_backend.controller;
 
+import com.backend.videoproject_backend.dao.AssociationDao;
 import com.backend.videoproject_backend.dto.TbAssociationEntity;
 import com.backend.videoproject_backend.dto.TbManagerEntity;
 import com.backend.videoproject_backend.service.AssociationService;
@@ -23,6 +24,8 @@ public class AssociationController {
     public AssociationService associationService;
     @Autowired
     public ManagerService managerService;
+    @Autowired
+    public AssociationDao associationDao;
 
     @PostMapping("/club")
     @ResponseBody
@@ -35,6 +38,7 @@ public class AssociationController {
             tbAssociationEntity.setAssociationName(name);
             tbAssociationEntity.setAssociationDesc(desc);
             tbAssociationEntity.setEstablishTime(new Timestamp(new Date().getTime()));
+            tbAssociationEntity.setMemberNum(1);
             associationService.addClub(tbAssociationEntity);
             //创建社长的关联表
             TbManagerEntity tbManagerEntity=new TbManagerEntity();
@@ -62,10 +66,10 @@ public class AssociationController {
         }
     }
 
-    @PostMapping("/club/{id}")
+    @PostMapping("/clubInfo")
     @ResponseBody
     @ApiOperation("更改社团信息")
-    public String ChangeInfo(@PathVariable Integer id,String type,String info)
+    public String ChangeInfo(Integer id,String type,String info)
     {
         try{
             Optional<TbAssociationEntity> tbAssociationEntity=associationService.findAssociationById(id);
@@ -105,6 +109,7 @@ public class AssociationController {
         }
     }
 
+
     @GetMapping("/club")
     @ResponseBody
     @ApiOperation("返回所有社团")
@@ -112,6 +117,18 @@ public class AssociationController {
     {
         try {
             return associationService.findAllClub();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @GetMapping("/SearchClub/{name}")
+    @ResponseBody
+    @ApiOperation("搜索社团")
+    public List<TbAssociationEntity> SearchClub(@PathVariable String name)
+    {
+        try {
+            return associationDao.findByAssociationNameLike("%"+name+"%");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

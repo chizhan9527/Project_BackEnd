@@ -12,4 +12,8 @@ public interface ManagerService {
     List<TbManagerEntity> ReturnAllMember(Integer as_id);
 
     TbManagerEntity ReturnOneMember(Integer as_id,Integer user_id);
+
+    List<TbManagerEntity> ReturnJoinedClub(Integer user_id);
+
+    void updateManager(TbManagerEntity tbManagerEntity);
 }

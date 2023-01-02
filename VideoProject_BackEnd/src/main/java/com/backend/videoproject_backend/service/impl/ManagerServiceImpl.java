@@ -39,4 +39,14 @@ public class ManagerServiceImpl implements ManagerService  {
     {
         return managerDao.findByAsIdAndUserId(as_id,user_id);
     }
+
+    @Override
+    public List<TbManagerEntity> ReturnJoinedClub(Integer user_id){
+        return managerDao.findAllByUserId(user_id);
+    }
+    @Override
+    public void updateManager(TbManagerEntity tbManagerEntity){
+        managerDao.save(tbManagerEntity);
+
+    }
 }
