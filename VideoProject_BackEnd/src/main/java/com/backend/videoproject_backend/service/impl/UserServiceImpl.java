@@ -1,6 +1,10 @@
 package com.backend.videoproject_backend.service.impl;
 
+import com.backend.videoproject_backend.dao.FeedbackDao;
+import com.backend.videoproject_backend.dao.PhysicalDao;
 import com.backend.videoproject_backend.dao.UserDao;
+import com.backend.videoproject_backend.dto.TbFeedbackEntity;
+import com.backend.videoproject_backend.dto.TbPhysicalEntity;
 import com.backend.videoproject_backend.dto.TbUserEntity;
 import com.backend.videoproject_backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +24,11 @@ import java.util.zip.Checksum;
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserDao userDao;
+    @Autowired
+    private PhysicalDao physicalDao;
+
+    @Autowired
+    private FeedbackDao feedbackDao;
 
     @Override
     public void addUser(TbUserEntity tbUserEntity)
@@ -62,5 +71,18 @@ public class UserServiceImpl implements UserService {
         return userDao.findByPhone(phone);
     }
 
+    @Override
+    public Optional<TbPhysicalEntity> findPhysicalByUserId(Integer id) {
+        return physicalDao.findByUserId(id);
+    }
 
+    @Override
+    public void addPhysical(TbPhysicalEntity tbPhysicalEntity) {
+        physicalDao.save(tbPhysicalEntity);
+    }
+
+    @Override
+    public void postFeedback(TbFeedbackEntity tbFeedbackEntity) {
+        feedbackDao.save(tbFeedbackEntity);
+    }
 }

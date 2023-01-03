@@ -39,6 +39,17 @@ public class TbUserEntity {
     @Column(name = "create_time")
     private Timestamp createTime;
 
+    @Transient
+    private Integer rank;
+
+    public void setRank(Integer rank) {
+        this.rank = rank;
+    }
+
+    public Integer getRank() {
+        return rank;
+    }
+
     public int getId() {
         return id;
     }

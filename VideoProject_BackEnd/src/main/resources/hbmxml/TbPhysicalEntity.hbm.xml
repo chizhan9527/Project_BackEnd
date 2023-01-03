@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.backend.videoproject_backend.dto.TbPhysicalEntity" table="tb_physical" schema="bili">
+        <id name="id" column="id"/>
+        <property name="userId" column="user_id"/>
+        <property name="height" column="height"/>
+        <property name="weight" column="weight"/>
+        <property name="bmi" column="BMI"/>
+        <property name="bust" column="bust"/>
+        <property name="waist" column="waist"/>
+        <property name="hipline" column="hipline"/>
+        <property name="modificationTime" column="modification_time"/>
+    </class>
+</hibernate-mapping>

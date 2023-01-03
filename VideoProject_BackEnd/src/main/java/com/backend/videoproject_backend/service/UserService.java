@@ -1,4 +1,6 @@
 package com.backend.videoproject_backend.service;
+import com.backend.videoproject_backend.dto.TbFeedbackEntity;
+import com.backend.videoproject_backend.dto.TbPhysicalEntity;
 import com.backend.videoproject_backend.dto.TbUserEntity;
 
 import java.util.List;
@@ -24,4 +26,10 @@ public interface UserService {
     Optional<TbUserEntity> findUserByName(String name);
 
     Optional<TbUserEntity> findUserByPhone(String phone);
+
+    Optional<TbPhysicalEntity> findPhysicalByUserId(Integer id);
+
+    void addPhysical(TbPhysicalEntity tbPhysicalEntity);
+
+    void postFeedback(TbFeedbackEntity tbFeedbackEntity);
 }

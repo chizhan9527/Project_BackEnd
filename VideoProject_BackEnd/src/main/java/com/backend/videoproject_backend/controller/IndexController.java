@@ -1,5 +1,6 @@
 package com.backend.videoproject_backend.controller;
 
+import com.backend.videoproject_backend.service.UserService;
 import com.backend.videoproject_backend.utils.SendSmsUtil;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +21,20 @@ public class IndexController {
     @Autowired
     private SendSmsUtil sendSmsUtil;
 
+    @Autowired
+    private UserService userService;
+
     @ResponseBody
     @RequestMapping(value = "/sendMessage",method = RequestMethod.POST)
     public String sendMessage(@RequestParam String phone){
+<<<<<<< HEAD
 
         System.out.println(phone);
+=======
+        if(userService.findUserByPhone(phone).isPresent()){
+            return "手机号已注册";
+        }
+>>>>>>> fdf969fdede295c9057c69a60e9f7d412c7add2e
         //生成六位数随机验证码
         String code = RandomUtil.getSixBitRandom();
         //设置redis的key为用户手机号

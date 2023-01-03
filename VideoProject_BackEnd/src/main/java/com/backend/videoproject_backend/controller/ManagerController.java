@@ -1,5 +1,6 @@
 package com.backend.videoproject_backend.controller;
 
+import com.backend.videoproject_backend.dto.TbAssociationEntity;
 import com.backend.videoproject_backend.dto.TbManagerEntity;
 import com.backend.videoproject_backend.dto.TbUserEntity;
 import com.backend.videoproject_backend.service.AssociationService;
@@ -40,6 +41,14 @@ public class ManagerController {
                 else
                     return "error";
             }
+            Optional<TbAssociationEntity> tbAssociationEntity=AssociationService.findAssociationById(as_id);
+            if(tbAssociationEntity.isPresent()) {
+                TbAssociationEntity tbAssociationEntity1 = tbAssociationEntity.get();
+                tbAssociationEntity1.setMemberNum(tbAssociationEntity1.getMemberNum() - 1);
+                AssociationService.updateAssociation(tbAssociationEntity1);
+                if (tbAssociationEntity1.getMemberNum() == 0)
+                    AssociationService.delClub(as_id);
+            }
             return ("OK");
         }catch (Exception e) {
             throw new RuntimeException(e);
@@ -50,37 +59,104 @@ public class ManagerController {
     @ResponseBody
     @ApiOperation("添加一个关联表（加入社团）")
     public String AddManager(Integer as_id,Integer user_id) {
-        try{
-        TbManagerEntity tbManagerEntity=new TbManagerEntity();
-        tbManagerEntity.setAsId(AssociationService.findAssociationById(as_id).get().getId());
-        tbManagerEntity.setUserId(user_id);
-        tbManagerEntity.setJoinTime(new Timestamp(new Date().getTime()));
-        tbManagerEntity.setStatus(0);
-        managerService.joinClub(tbManagerEntity);
-        return("OK");
+        try {
+            TbManagerEntity tbManagerEntity = new TbManagerEntity();
+            tbManagerEntity.setAsId(AssociationService.findAssociationById(as_id).get().getId());
+            tbManagerEntity.setUserId(user_id);
+            tbManagerEntity.setJoinTime(new Timestamp(new Date().getTime()));
+            tbManagerEntity.setStatus(0);
+            managerService.joinClub(tbManagerEntity);
+            Optional<TbAssociationEntity> tbAssociationEntity = AssociationService.findAssociationById(as_id);
+            if (tbAssociationEntity.isPresent()) {
+                TbAssociationEntity tbAssociationEntity1 = tbAssociationEntity.get();
+                tbAssociationEntity1.setMemberNum(tbAssociationEntity1.getMemberNum() + 1);
+                AssociationService.updateAssociation(tbAssociationEntity1);
+            }
+            return ("OK");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    @GetMapping("/manager")
+    @GetMapping("/manager/{as_id}/{rank}")
     @ResponseBody
     @ApiOperation("查询社团指定成员，0为所有成员，1为管理员和社长，2为社长")
-    public List<TbUserEntity> GetTargetMember(Integer as_id,Integer rank){
+    public List<TbUserEntity> GetTargetMember(@PathVariable Integer as_id,@PathVariable Integer rank){
         try{
-        List<TbUserEntity> tbUserEntities=new ArrayList<>();
+            List<TbUserEntity> tbUserEntities=new ArrayList<>();
         List<TbManagerEntity> ClubMember=managerService.ReturnAllMember(as_id);
         if(ClubMember.isEmpty())
             return null;
         else {
             Iterator<TbManagerEntity> iterator = ClubMember.listIterator();
             while (iterator.hasNext()) {
-                TbManagerEntity tbManagerEntity=iterator.next();
-                if (tbManagerEntity.getStatus() >= rank)
-                    tbUserEntities.add(userService.findUserById(tbManagerEntity.getUserId()).get());
+                TbManagerEntity tbManagerEntity = iterator.next();
+                if (tbManagerEntity.getStatus() >= rank) {
+                    TbUserEntity tbUserEntity=userService.findUserById(tbManagerEntity.getUserId()).get();
+                    tbUserEntity.setRank(tbManagerEntity.getStatus());
+                    tbUserEntities.add(tbUserEntity);
+                }
             }
             return tbUserEntities;
         }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @GetMapping("/getClub/{user_id}")
+    @ResponseBody
+    @ApiOperation("返回关注的社团")
+    public List<TbAssociationEntity> FindJoinedClub(@PathVariable Integer user_id)
+    {
+        try {
+            List<TbAssociationEntity> tbAssociationEntities=new ArrayList<>();
+            List<TbManagerEntity> tbManagerEntities= managerService.ReturnJoinedClub(user_id);
+            if(tbManagerEntities.isEmpty())
+                return null;
+            else {
+                Iterator<TbManagerEntity> iterator = tbManagerEntities.listIterator();
+                while (iterator.hasNext()) {
+                    TbManagerEntity tbManagerEntity = iterator.next();
+                    tbAssociationEntities.add(AssociationService.findAssociationById(tbManagerEntity.getAsId()).get());
+                }
+                return tbAssociationEntities;
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+    @GetMapping("/getRank/{user_id}/{as_id}")
+    @ResponseBody
+    @ApiOperation("返回特定成员在特定社团下的权限")
+    public Integer SearchClub(@PathVariable Integer user_id,@PathVariable Integer as_id)
+    {
+        try {
+            TbManagerEntity tbManagerEntity=managerService.ReturnOneMember(as_id,user_id);
+            return tbManagerEntity.getStatus();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+    @PutMapping("/changeRank")
+    @ResponseBody
+    @ApiOperation("更改成员的权限，如果目标是管理员则降级，如果是成员则升为管理员")
+    public String ChangeRank( Integer user_id, Integer as_id)
+    {
+        try {
+            TbManagerEntity tbManagerEntity=managerService.ReturnOneMember(as_id,user_id);
+            Integer rank= tbManagerEntity.getStatus();
+            if(rank==1)//为管理员，降级
+            {
+                tbManagerEntity.setStatus(0);
+                managerService.updateManager(tbManagerEntity);
+            }
+            else if(rank==0)//为用户，升级
+            {
+                tbManagerEntity.setStatus(1);
+                managerService.updateManager(tbManagerEntity);
+            }
+            return "ok";
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
