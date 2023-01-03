@@ -118,11 +118,10 @@ public class UserController {
         return emptyNames.toArray(result);
     }
 
-
-    @PutMapping("/physical/{id}")
+    @PostMapping("/physical")
     @ResponseBody
     @ApiOperation("修改一个用户身体数据")
-    public String postPhysical(@PathVariable Integer id,int height,int weight,double bmi,int bust,int waist,int hipline)
+    public String postPhysical(Integer id,int height,int weight,double bmi,int bust,int waist,int hipline)
     {
         try {
             Optional<TbPhysicalEntity> tbPhysicalEntity = userService.findPhysicalByUserId(id);
@@ -135,10 +134,20 @@ public class UserController {
                 tbPhysicalEntity.get().setHipline(hipline);
                 tbPhysicalEntity.get().setModificationTime(new Timestamp(new Date().getTime()));
                 userService.addPhysical(tbPhysicalEntity.get());
-                return "ok";
+                return "修改用户信息";
             }
             else{
-                return "error";
+                TbPhysicalEntity target = new TbPhysicalEntity();
+                target.setHeight(height);
+                target.setWeight(weight);
+                target.setWaist(waist);
+                target.setBmi(bmi);
+                target.setBust(bust);
+                target.setUserId(id);
+                target.setHipline(hipline);
+                target.setModificationTime(new Timestamp(new Date().getTime()));
+                userService.addPhysical(target);
+                return "新建用户身体信息";
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
