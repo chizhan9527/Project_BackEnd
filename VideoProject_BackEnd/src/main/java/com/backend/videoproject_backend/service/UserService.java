@@ -32,4 +32,6 @@ public interface UserService {
     void addPhysical(TbPhysicalEntity tbPhysicalEntity);
 
     void postFeedback(TbFeedbackEntity tbFeedbackEntity);
+
+
 }

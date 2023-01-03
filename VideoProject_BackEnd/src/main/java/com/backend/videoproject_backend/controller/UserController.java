@@ -2,6 +2,8 @@ package com.backend.videoproject_backend.controller;
 
 import com.backend.videoproject_backend.dao.FeedbackDao;
 import com.backend.videoproject_backend.dao.PhysicalDao;
+import com.backend.videoproject_backend.dao.UserDao;
+import com.backend.videoproject_backend.dto.TbAssociationEntity;
 import com.backend.videoproject_backend.dto.TbFeedbackEntity;
 import com.backend.videoproject_backend.dto.TbPhysicalEntity;
 import com.backend.videoproject_backend.dto.TbUserEntity;
@@ -28,6 +30,8 @@ public class UserController {
 
     @Autowired
     public FeedbackDao feedbackDao;
+    @Autowired
+    private UserDao userDao;
 
     @PostMapping("/user")
     @ResponseBody
@@ -188,4 +192,15 @@ public class UserController {
 
     }
 
+    @GetMapping("/SearchUser/{name}")
+    @ResponseBody
+    @ApiOperation("搜索用户")
+    public List<TbUserEntity> SearchClub(@PathVariable String name)
+    {
+        try {
+            return userDao.findByNameLike("%"+name+"%");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
