@@ -17,10 +17,10 @@ public class FollowController {
     @Autowired
     private FollowService followService;
 
-    @PutMapping("/follow/{followUserId}")
+    @PostMapping("/follow")
     @ResponseBody
     @ApiOperation("关注/取消关注")
-    public String follow(@PathVariable Integer followUserId)
+    public String follow(Integer followUserId)
     {
         return followService.follow(followUserId);
     }

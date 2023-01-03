@@ -88,12 +88,16 @@ public class UserController {
     @PutMapping("/user")
     @ResponseBody
     @ApiOperation("更新一名用户信息")
-    public String UpdateUser(@RequestBody TbUserEntity user)
+    public String UpdateUser(Integer id,String name,Integer gender,String email,String birthday,String detail)
     {
         try {
-            Optional<TbUserEntity> target = userService.findUserById(user.getId());
+            Optional<TbUserEntity> target = userService.findUserById(id);
             if(target.isPresent()) {
-                BeanUtils.copyProperties(user,target.get(),getNullPropertyNames(user));
+                target.get().setName(name);
+                target.get().setGender(gender);
+                target.get().setEmail(email);
+                target.get().setBirthday(birthday);
+                target.get().setDetail(detail);
                 userService.updateUser(target.get());
                 return "ok";
             }
