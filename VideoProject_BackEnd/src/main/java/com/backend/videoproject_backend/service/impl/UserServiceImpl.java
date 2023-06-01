@@ -31,9 +31,15 @@ public class UserServiceImpl implements UserService {
     private FeedbackDao feedbackDao;
 
     @Override
-    public void addUser(TbUserEntity tbUserEntity)
+    public String addUser(TbUserEntity tbUserEntity)
     {
+        if(tbUserEntity.getName()==null)return "userName input error";
+        else if(tbUserEntity.getPhone().length()!=11)return "phone error";
+        else if(tbUserEntity.getPassword().length()<4)return "password too short";
+        else if(tbUserEntity.getAvator().length()<8)return "url invalid";
+        else if(tbUserEntity.getCreateTime()==null)return "time no format";
         userDao.save(tbUserEntity);
+        return "register success";
     }
 
     @Override

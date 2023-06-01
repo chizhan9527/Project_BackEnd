@@ -13,7 +13,7 @@ import java.util.Optional;
  */
 public interface UserService {
 
-    void addUser(TbUserEntity tbUserEntity);
+    String addUser(TbUserEntity tbUserEntity);
 
     void deleteUser(Integer id);
 

@@ -1105,3 +1105,7 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
 	... 76 common frames omitted
 2023-06-01 16:43:02.158 ERROR 22760 --- [main] org.hibernate.engine.jdbc.spi.SqlExceptionHelper - Cannot add or update a child row: a foreign key constraint fails (`bili`.`tb_manager`, CONSTRAINT `FK` FOREIGN KEY (`as_id`) REFERENCES `tb_association` (`id`))
 2023-06-01 16:54:14.871 ERROR 25488 --- [main] org.hibernate.engine.jdbc.spi.SqlExceptionHelper - Cannot add or update a child row: a foreign key constraint fails (`bili`.`tb_manager`, CONSTRAINT `FK` FOREIGN KEY (`as_id`) REFERENCES `tb_association` (`id`))
+2023-06-01 23:18:34.218 ERROR 21128 --- [main] org.hibernate.engine.jdbc.spi.SqlExceptionHelper - Column 'create_time' cannot be null
+2023-06-01 23:20:01.673 ERROR 24792 --- [main] org.hibernate.engine.jdbc.spi.SqlExceptionHelper - Column 'create_time' cannot be null
+2023-06-01 23:20:58.172 ERROR 6632 --- [main] org.hibernate.engine.jdbc.spi.SqlExceptionHelper - Column 'create_time' cannot be null
+2023-06-01 23:21:29.566 ERROR 23480 --- [main] org.hibernate.engine.jdbc.spi.SqlExceptionHelper - Column 'create_time' cannot be null
