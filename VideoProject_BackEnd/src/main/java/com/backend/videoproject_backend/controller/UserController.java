@@ -2,6 +2,8 @@ package com.backend.videoproject_backend.controller;
 
 import com.backend.videoproject_backend.dao.FeedbackDao;
 import com.backend.videoproject_backend.dao.PhysicalDao;
+import com.backend.videoproject_backend.dao.UserDao;
+import com.backend.videoproject_backend.dto.TbAssociationEntity;
 import com.backend.videoproject_backend.dto.TbFeedbackEntity;
 import com.backend.videoproject_backend.dto.TbPhysicalEntity;
 import com.backend.videoproject_backend.dto.TbUserEntity;
@@ -28,6 +30,8 @@ public class UserController {
 
     @Autowired
     public FeedbackDao feedbackDao;
+    @Autowired
+    private UserDao userDao;
 
     @PostMapping("/user")
     @ResponseBody
@@ -88,12 +92,16 @@ public class UserController {
     @PutMapping("/user")
     @ResponseBody
     @ApiOperation("更新一名用户信息")
-    public String UpdateUser(@RequestBody TbUserEntity user)
+    public String UpdateUser(Integer id,String name,Integer gender,String email,String birthday,String detail)
     {
         try {
-            Optional<TbUserEntity> target = userService.findUserById(user.getId());
+            Optional<TbUserEntity> target = userService.findUserById(id);
             if(target.isPresent()) {
-                BeanUtils.copyProperties(user,target.get(),getNullPropertyNames(user));
+                target.get().setName(name);
+                target.get().setGender(gender);
+                target.get().setEmail(email);
+                target.get().setBirthday(birthday);
+                target.get().setDetail(detail);
                 userService.updateUser(target.get());
                 return "ok";
             }
@@ -118,11 +126,10 @@ public class UserController {
         return emptyNames.toArray(result);
     }
 
-
-    @PutMapping("/physical/{id}")
+    @PostMapping("/physical")
     @ResponseBody
     @ApiOperation("修改一个用户身体数据")
-    public String postPhysical(@PathVariable Integer id,int height,int weight,double bmi,int bust,int waist,int hipline)
+    public String postPhysical(Integer id,int height,int weight,double bmi,int bust,int waist,int hipline)
     {
         try {
             Optional<TbPhysicalEntity> tbPhysicalEntity = userService.findPhysicalByUserId(id);
@@ -135,10 +142,20 @@ public class UserController {
                 tbPhysicalEntity.get().setHipline(hipline);
                 tbPhysicalEntity.get().setModificationTime(new Timestamp(new Date().getTime()));
                 userService.addPhysical(tbPhysicalEntity.get());
-                return "ok";
+                return "修改用户信息";
             }
             else{
-                return "error";
+                TbPhysicalEntity target = new TbPhysicalEntity();
+                target.setHeight(height);
+                target.setWeight(weight);
+                target.setWaist(waist);
+                target.setBmi(bmi);
+                target.setBust(bust);
+                target.setUserId(id);
+                target.setHipline(hipline);
+                target.setModificationTime(new Timestamp(new Date().getTime()));
+                userService.addPhysical(target);
+                return "新建用户身体信息";
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -175,4 +192,15 @@ public class UserController {
 
     }
 
+    @GetMapping("/SearchUser/{name}")
+    @ResponseBody
+    @ApiOperation("搜索用户")
+    public List<TbUserEntity> SearchClub(@PathVariable String name)
+    {
+        try {
+            return userDao.findByNameLike("%"+name+"%");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

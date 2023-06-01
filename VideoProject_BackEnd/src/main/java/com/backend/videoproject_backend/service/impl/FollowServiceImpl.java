@@ -100,6 +100,7 @@ public class FollowServiceImpl implements FollowService {
                     Optional<TbUserEntity> userEntity = userDao.findById(i);
                     if(userEntity.isPresent()){
                         FollowBox followBox = new FollowBox();
+                        followBox.setId(i);
                         followBox.setName(userEntity.get().getName());
                         followBox.setAvatar(userEntity.get().getAvator());
                         followBoxList.add(followBox);
