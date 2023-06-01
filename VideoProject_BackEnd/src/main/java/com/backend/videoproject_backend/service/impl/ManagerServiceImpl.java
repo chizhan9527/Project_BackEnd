@@ -20,13 +20,25 @@ public class ManagerServiceImpl implements ManagerService  {
     @Autowired
     private ManagerDao managerDao;
     @Override
-    public void joinClub(TbManagerEntity tbManagerEntity){
-        managerDao.save(tbManagerEntity);
+    public boolean joinClub(TbManagerEntity tbManagerEntity){
+        try{
+            managerDao.save(tbManagerEntity);
+
+        }catch (Exception e) {
+            return false;
+
+        }
+        return true;
     }
 
     @Override
-    public void quitClub(Integer as_id,Integer user_id){
-        managerDao.deleteByAsIdAndUserId(as_id,user_id);
+    public boolean quitClub(Integer as_id,Integer user_id){
+        try{
+            managerDao.deleteByAsIdAndUserId(as_id,user_id);
+        }catch (Exception e) {
+            return false;
+        }
+        return true;
     }
 
     @Override
@@ -37,7 +49,14 @@ public class ManagerServiceImpl implements ManagerService  {
     @Override
     public TbManagerEntity ReturnOneMember(Integer as_id,Integer user_id)
     {
-        return managerDao.findByAsIdAndUserId(as_id,user_id);
+        TbManagerEntity res=null;
+        try {
+            res=managerDao.findByAsIdAndUserId(as_id,user_id);
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+        return res;
     }
 
     @Override
@@ -45,8 +64,15 @@ public class ManagerServiceImpl implements ManagerService  {
         return managerDao.findAllByUserId(user_id);
     }
     @Override
-    public void updateManager(TbManagerEntity tbManagerEntity){
-        managerDao.save(tbManagerEntity);
+    public boolean updateManager(TbManagerEntity tbManagerEntity){
+        try{
+            managerDao.save(tbManagerEntity);
+        }
+        catch (Exception e){
+            return false;
+
+        }
+        return true;
 
     }
 }

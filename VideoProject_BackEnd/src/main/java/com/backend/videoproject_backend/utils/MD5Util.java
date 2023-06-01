@@ -29,5 +29,22 @@ public class MD5Util {
     }
     return buffer.toString();
   }
+  //解密算法
+  private static byte[] decodeHex(String hexString) {
+    int length = hexString.length();
+    if (length % 2 != 0) {
+      throw new IllegalArgumentException("Invalid hex string");
+    }
+
+    byte[] bytes = new byte[length / 2];
+    for (int i = 0; i < length; i += 2) {
+      String hexByte = hexString.substring(i, i + 2);
+      int decimal = Integer.parseInt(hexByte, 16);
+      bytes[i / 2] = (byte) decimal;
+    }
+
+    return bytes;
+  }
+
 
 }
