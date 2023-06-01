@@ -6,10 +6,7 @@ import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import com.backend.videoproject_backend.utils.RandomUtil;
 
 import java.util.Random;
@@ -50,8 +47,8 @@ public class IndexController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/checkCode",method = RequestMethod.GET)
-    public String checkCode(@RequestParam String phone,@RequestParam String inputCode){
+    @RequestMapping(value = "/checkCode/{phone}/{inputCode}",method = RequestMethod.GET)
+    public String checkCode(@PathVariable String phone, @PathVariable String inputCode){
         String redisKey = phone;
         String realCode= (String) redisTemplate.opsForValue().get(redisKey);
         if (realCode!=null && realCode.equals(inputCode)){

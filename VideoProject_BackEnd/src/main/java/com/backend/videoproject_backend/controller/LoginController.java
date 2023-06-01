@@ -28,6 +28,8 @@ public class LoginController {
     @ApiOperation("登录")
     public SaResult doLogin(String phone, String password)
     {
+        System.out.println("dadad");
+        System.out.println(phone);
         Optional<TbUserEntity> tbUserEntity = userService.findUserByPhone(phone);
         if(tbUserEntity.isPresent()) {
             if(tbUserEntity.get().getPassword().equals(encrypt(password))){

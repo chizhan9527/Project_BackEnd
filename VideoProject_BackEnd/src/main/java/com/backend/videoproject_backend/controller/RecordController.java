@@ -2,7 +2,6 @@ package com.backend.videoproject_backend.controller;
 
 import com.backend.videoproject_backend.dto.TbRecordEntity;
 
-import com.backend.videoproject_backend.dto.VUserRecordEntity;
 import com.backend.videoproject_backend.service.RecordService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -60,15 +59,5 @@ public class RecordController {
         }
     }
 
-    @GetMapping("/record")
-    @ResponseBody
-    @ApiOperation("查找跑步总排名")
-    public List<VUserRecordEntity> GetRecord()
-    {
-        try{
-            return recordService.findUserRecordDesc();
-        }catch (Exception e){
-            throw new RuntimeException(e);
-        }
-    }
+    
 }
