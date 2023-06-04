@@ -31,7 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
-
+VideoProject_BackEnd/out
 ###logback###
 logs/
 *.log

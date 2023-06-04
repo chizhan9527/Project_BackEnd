@@ -1,13 +1,16 @@
 package com.backend.videoproject_backend.service;
 
+import com.backend.videoproject_backend.dto.TbAssociationEntity;
 import com.backend.videoproject_backend.dto.TbManagerEntity;
+import com.backend.videoproject_backend.dto.TbUserEntity;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ManagerService {
-    void joinClub(TbManagerEntity tbManagerEntity);
+    boolean joinClub(Optional<TbAssociationEntity> associationEntityOptional, Optional<TbUserEntity> userEntityOptional);
 
-    void quitClub(Integer as_id,Integer user_id);
+    boolean quitClub(Integer as_id,Integer user_id);
 
     List<TbManagerEntity> ReturnAllMember(Integer as_id);
 
@@ -15,5 +18,5 @@ public interface ManagerService {
 
     List<TbManagerEntity> ReturnJoinedClub(Integer user_id);
 
-    void updateManager(TbManagerEntity tbManagerEntity);
+    boolean updateManager(TbManagerEntity tbManagerEntity);
 }

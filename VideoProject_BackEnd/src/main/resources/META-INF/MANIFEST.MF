@@ -1,4 +1,70 @@
 Manifest-Version: 1.0
 Main-Class: com.backend.videoproject_backend.VideoProjectBackEndApplicat
  ion
+Class-Path: netty-codec-http-4.1.79.Final.jar slf4j-api-1.7.25.jar logba
+ ck-core-1.2.11.jar netty-transport-native-kqueue-4.1.79.Final-osx-x86_6
+ 4.jar mysql-connector-java-8.0.30.jar netty-codec-socks-4.1.79.Final.ja
+ r spring-beans-5.3.22.jar commons-pool2-2.11.1.jar netty-all-4.1.79.Fin
+ al.jar jackson-datatype-jdk8-2.13.3.jar jakarta.xml.bind-api-2.3.3.jar 
+ jandex-2.4.2.Final.jar netty-resolver-dns-classes-macos-4.1.79.Final.ja
+ r swagger-annotations-1.5.20.jar unbescape-1.1.6.RELEASE.jar commons-lo
+ gging-1.2.jar spring-boot-starter-web-2.7.3.jar netty-transport-native-
+ epoll-4.1.79.Final-linux-x86_64.jar netty-transport-native-kqueue-4.1.7
+ 9.Final-osx-aarch_64.jar netty-codec-haproxy-4.1.79.Final.jar jackson-a
+ nnotations-2.13.3.jar netty-resolver-dns-native-macos-4.1.79.Final-osx-
+ aarch_64.jar jboss-transaction-api_1.2_spec-1.1.1.Final.jar lombok-1.18
+ .24.jar hibernate-core-5.6.10.Final.jar jackson-datatype-jsr310-2.13.3.
+ jar gson-2.9.1.jar springfox-swagger2-2.9.2.jar jaxb-api-2.3.1.jar spri
+ ngfox-core-2.9.2.jar classmate-1.5.1.jar java-jwt-3.4.0.jar sa-token-da
+ o-redis-1.31.0.jar spring-tx-5.3.22.jar jboss-logging-3.4.3.Final.jar a
+ spectjweaver-1.9.7.jar netty-codec-memcache-4.1.79.Final.jar spring-boo
+ t-starter-thymeleaf-2.7.3.jar spring-amqp-2.4.6.jar antlr-2.7.7.jar spr
+ ing-boot-starter-data-redis-2.7.3.jar org.eclipse.paho.client.mqttv3-1.
+ 2.0.jar snakeyaml-1.30.jar netty-codec-4.1.79.Final.jar spring-context-
+ 5.3.22.jar spring-web-5.3.22.jar netty-transport-classes-kqueue-4.1.79.
+ Final.jar spring-boot-starter-aop-2.7.3.jar spring-expression-5.3.22.ja
+ r jakarta.persistence-api-2.2.3.jar netty-codec-redis-4.1.79.Final.jar 
+ logback-classic-1.2.10.jar spring-data-keyvalue-2.7.2.jar spring-orm-5.
+ 3.22.jar okio-1.12.0.jar spring-core-5.3.22.jar sa-token-core-1.31.0.ja
+ r okhttp-2.7.5.jar javax.persistence-api-2.2.jar spring-aspects-5.3.22.
+ jar spring-plugin-metadata-1.2.0.RELEASE.jar spring-boot-starter-data-j
+ pa-2.7.3.jar thymeleaf-extras-java8time-3.0.4.RELEASE.jar tencentcloud-
+ sdk-java-3.1.600.jar amqp-client-5.14.2.jar commons-codec-1.15.jar jaxb
+ -runtime-2.3.6.jar netty-resolver-dns-native-macos-4.1.79.Final-osx-x86
+ _64.jar spring-retry-1.3.3.jar netty-transport-rxtx-4.1.79.Final.jar hi
+ bernate-commons-annotations-5.1.2.Final.jar guava-20.0.jar lettuce-core
+ -6.1.9.RELEASE.jar thymeleaf-3.0.15.RELEASE.jar swagger-models-1.5.20.j
+ ar jakarta.activation-api-1.2.2.jar netty-codec-mqtt-4.1.79.Final.jar s
+ pringfox-schema-2.9.2.jar spring-rabbit-2.4.6.jar sa-token-spring-boot-
+ starter-1.31.0.jar netty-resolver-4.1.79.Final.jar netty-handler-proxy-
+ 4.1.79.Final.jar attoparser-2.0.5.RELEASE.jar netty-codec-stomp-4.1.79.
+ Final.jar HikariCP-4.0.3.jar netty-common-4.1.79.Final.jar springfox-sw
+ agger-ui-2.9.2.jar spring-jdbc-5.3.22.jar jackson-core-2.13.3.jar netty
+ -codec-http2-4.1.79.Final.jar spring-boot-starter-websocket-2.7.3.jar s
+ pring-boot-autoconfigure-2.7.3.jar log4j-to-slf4j-2.17.2.jar reactive-s
+ treams-1.0.4.jar spring-boot-2.7.3.jar sa-token-servlet-1.31.0.jar spri
+ ng-boot-starter-jdbc-2.7.3.jar spring-oxm-5.3.22.jar spring-data-common
+ s-2.7.2.jar jakarta.activation-1.2.2.jar jackson-module-parameter-names
+ -2.13.3.jar netty-resolver-dns-4.1.79.Final.jar spring-integration-core
+ -5.5.14.jar spring-webmvc-5.3.22.jar netty-transport-native-epoll-4.1.7
+ 9.Final-linux-aarch_64.jar netty-codec-dns-4.1.79.Final.jar javax.activ
+ ation-api-1.2.0.jar txw2-2.3.6.jar spring-jcl-5.3.22.jar tomcat-embed-e
+ l-9.0.65.jar netty-buffer-4.1.79.Final.jar spring-data-jpa-2.7.2.jar sp
+ ring-data-redis-2.7.2.jar springfox-spi-2.9.2.jar mapstruct-1.2.0.Final
+ .jar jul-to-slf4j-1.7.36.jar spring-plugin-core-1.2.0.RELEASE.jar netty
+ -transport-classes-epoll-4.1.79.Final.jar spring-context-support-5.3.22
+ .jar thymeleaf-spring5-3.0.15.RELEASE.jar logging-interceptor-2.7.5.jar
+  spring-websocket-5.3.22.jar spring-boot-starter-logging-2.7.3.jar jaka
+ rta.transaction-api-1.3.3.jar spring-boot-starter-amqp-2.7.3.jar spring
+ -messaging-5.3.22.jar netty-transport-sctp-4.1.79.Final.jar ini4j-0.5.4
+ .jar spring-aop-5.3.22.jar tomcat-embed-websocket-9.0.65.jar springfox-
+ spring-web-2.9.2.jar netty-transport-4.1.79.Final.jar log4j-api-2.17.2.
+ jar netty-codec-xml-4.1.79.Final.jar netty-transport-udt-4.1.79.Final.j
+ ar jackson-databind-2.13.3.jar reactor-core-3.4.22.jar spring-boot-star
+ ter-tomcat-2.7.3.jar istack-commons-runtime-3.0.12.jar tomcat-embed-cor
+ e-9.0.65.jar byte-buddy-1.12.13.jar spring-integration-mqtt-5.5.14.jar 
+ netty-transport-native-unix-common-4.1.79.Final.jar spring-boot-starter
+ -json-2.7.3.jar springfox-swagger-common-2.9.2.jar netty-handler-4.1.79
+ .Final.jar netty-codec-smtp-4.1.79.Final.jar spring-boot-starter-2.7.3.
+ jar jakarta.annotation-api-1.3.5.jar
 

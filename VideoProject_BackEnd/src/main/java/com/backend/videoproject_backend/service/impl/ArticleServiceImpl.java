@@ -180,7 +180,7 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public List<TbArticleEntity> getByPageAndUserIdService(Integer id, Integer currentPage) {
 
-        int pageSize = 20;//设置每页显示的数据数
+        int pageSize = 1;//设置每页显示的数据数
         //设置分页条件，传入当前页面和页面大小
         Pageable pageable = PageRequest.of(currentPage-1, pageSize);
         List<TbArticleEntity> tbArticleEntityList = articleDao.findAllByUserIdOrderByCreateTimeDesc(id,pageable);
