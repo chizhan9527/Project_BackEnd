@@ -3,8 +3,10 @@ package com.backend.videoproject_backend.controller;
 import com.backend.videoproject_backend.dao.AssociationDao;
 import com.backend.videoproject_backend.dto.TbAssociationEntity;
 import com.backend.videoproject_backend.dto.TbManagerEntity;
+import com.backend.videoproject_backend.dto.TbUserEntity;
 import com.backend.videoproject_backend.service.AssociationService;
 import com.backend.videoproject_backend.service.ManagerService;
+import com.backend.videoproject_backend.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,9 @@ public class AssociationController {
     @Autowired
     public AssociationDao associationDao;
 
+    @Autowired
+    public UserService userService;
+
     @PostMapping("/club")
     @ResponseBody
     @ApiOperation("新建一个社团")
@@ -41,17 +46,18 @@ public class AssociationController {
             tbAssociationEntity.setMemberNum(1);
             associationService.addClub(tbAssociationEntity);
             //创建社长的关联表
-            TbManagerEntity tbManagerEntity=new TbManagerEntity();
-            tbManagerEntity.setAsId(tbAssociationEntity.getId());
-            tbManagerEntity.setUserId(user_id);
-            tbManagerEntity.setJoinTime(tbAssociationEntity.getEstablishTime());
-            tbManagerEntity.setStatus(2);
-            managerService.joinClub(tbManagerEntity);
-            return "ok";
+            Optional<TbAssociationEntity> AsE=associationService.findAssociationById(tbAssociationEntity.getId());
+            Optional<TbUserEntity> UsE=userService.findUserById(user_id);
+            boolean massage= managerService.joinClub(AsE,UsE);
+
+            if (massage)
+                return "OK";
+            else
+                return "managerService False";
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-    };
+    }
 
     @DeleteMapping("/club/{id}")
     @ResponseBody
