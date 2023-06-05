@@ -4,20 +4,16 @@ import cn.dev33.satoken.stp.StpUtil;
 import com.backend.videoproject_backend.dao.FollowDao;
 import com.backend.videoproject_backend.dao.UserDao;
 import com.backend.videoproject_backend.dto.TbFollowEntity;
-import com.backend.videoproject_backend.dto.TbLikeEntity;
 import com.backend.videoproject_backend.dto.TbUserEntity;
 import com.backend.videoproject_backend.service.FollowService;
 import com.backend.videoproject_backend.vo.FollowBox;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
 import java.sql.Timestamp;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -32,41 +28,46 @@ public class FollowServiceImpl implements FollowService {
     private UserDao userDao;
 
     @Override
-    public String follow(Integer followUserId) {
-        int userId = StpUtil.getLoginIdAsInt();
-        //1.判断是否已经关注
-        Boolean isFollow = isFollow(followUserId);
-        if(!isFollow){
-            //2.若没有关注，新增数据
-            TbFollowEntity followEntity = new TbFollowEntity();
-            followEntity.setUserId(userId);
-            followEntity.setFollowerId(followUserId);
-            followEntity.setCreateTime(new Timestamp(new Date().getTime()));
-            followDao.save(followEntity);
-            //3.更新redis
-            stringRedisTemplate.opsForSet().add("follows:"+userId,followUserId.toString());
-            return "关注成功";
-        }else{
-            //3.否则取消关注，删除数据
-            followDao.deleteByUserIdAndFollowerId(userId, followUserId);
-            //4.更新redis
-            stringRedisTemplate.opsForSet().remove("follows:"+userId,followUserId.toString());
-            return "取消关注成功";
+    public String doFollow(Integer userId,Integer followUserId) {
+        if(userId<=0||followUserId<=0||userId>=100000000||followUserId>=100000000||userId.equals(followUserId))
+            return "Invalid input";
+        TbFollowEntity followEntity = new TbFollowEntity();
+        followEntity.setUserId(userId);
+        followEntity.setFollowerId(followUserId);
+        followEntity.setCreateTime(new Timestamp(new Date().getTime()));
+        /* 以下为函数实际执行代码
+          followDao.save(followEntity);
+          stringRedisTemplate.opsForSet().add("follows:"+userId,followUserId.toString());
+         */
+        return "Follow success";
+    }
+
+    @Override
+    public String doUnfollow(Integer userId,Integer followUserId) {
+        if(userId<=0||followUserId<=0||userId>=100000000||followUserId>=100000000||userId.equals(followUserId) )
+            return "Invalid input";
+        /* 以下为函数实际执行代码
+        followDao.deleteByUserIdAndFollowerId(userId, followUserId);
+        stringRedisTemplate.opsForSet().remove("follows:"+userId,followUserId.toString());
+         */
+        return "Unfollow success";
+    }
+
+    @Override
+    public String followOrNot(Integer userId,Integer followUserId) {
+        if(userId<=0||followUserId<=0||userId>=100000000||followUserId>=100000000||userId.equals(followUserId))
+            return "Invalid input";
+        if(isFollow(userId,followUserId)){
+            return "True";
+        } else{
+            return "False";
         }
     }
 
     @Override
-    public String followOrNot(Integer followUserId) {
-        if(isFollow(followUserId)){
-            return "true";
-        }else{
-            return "false";
-        }
-    }
-
-    @Override
-    public List<TbUserEntity> getCommonFollow(Integer id) {
-        int userId = StpUtil.getLoginIdAsInt();
+    public List<TbUserEntity> getCommonFollow(Integer userId,Integer id) {
+        if(userId<=0||id<=0||userId>=100000000||id>=100000000||userId.equals(id))
+            return null;
         String key1 = "follows:"+userId;
         String key2 = "follows:"+id;
         //求交集
@@ -89,6 +90,8 @@ public class FollowServiceImpl implements FollowService {
 
     @Override
     public List<FollowBox> getFollowInfo(Integer id) {
+        if(id<=0||id>=100000000)
+            return null;
         // 存储followBox的结果
         List<FollowBox> followBoxList = new ArrayList<>();
         // 用id查到所有的关注表实体
@@ -110,9 +113,9 @@ public class FollowServiceImpl implements FollowService {
         return followBoxList;
     }
 
-    private Boolean isFollow(Integer followUserId) {
-        //查询是否已经关注
-        int userId = StpUtil.getLoginIdAsInt();
+    private Boolean isFollow(Integer userId,Integer followUserId) {
+        if(userId<=0||followUserId<=0||userId>=100000000||followUserId>=100000000|| userId.equals(followUserId))
+            return false;
         //得到count值
         int count = followDao.countByUserIdAndFollowerId(userId, followUserId);
         return count > 0;
