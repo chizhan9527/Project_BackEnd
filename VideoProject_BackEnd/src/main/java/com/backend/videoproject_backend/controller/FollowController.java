@@ -20,25 +20,35 @@ public class FollowController {
     @PostMapping("/follow")
     @ResponseBody
     @ApiOperation("关注/取消关注")
-    public String follow(Integer followUserId)
+    public String follow(Integer userId, Integer followUserId)
     {
-        return followService.follow(followUserId);
+        //1.判断是否已经关注
+        String isFollow = followService.followOrNot(userId,followUserId);
+        if(isFollow.equals("true")){
+            return followService.doFollow(userId,followUserId);
+        }
+        else if(isFollow.equals("false")){
+            return followService.doUnfollow(userId,followUserId);
+        }
+        else {
+            return "Invalid input";
+        }
     }
 
     @GetMapping("/follow/or/not/{followUserId}")
     @ResponseBody
     @ApiOperation("是否已经关注")
-    public String followOrNot(@PathVariable Integer followUserId)
+    public String followOrNot(Integer userId,@PathVariable Integer followUserId)
     {
-        return followService.followOrNot(followUserId);
+        return followService.followOrNot(userId,followUserId);
     }
 
     @GetMapping("/follow/common/{id}")
     @ResponseBody
     @ApiOperation("获取共同关注")
-    public List<TbUserEntity> getCommonFollow(@PathVariable Integer id)
+    public List<TbUserEntity> getCommonFollow(Integer userId,@PathVariable Integer id)
     {
-        return followService.getCommonFollow(id);
+        return followService.getCommonFollow(userId,id);
     }
 
     @GetMapping("/follow/{id}")
