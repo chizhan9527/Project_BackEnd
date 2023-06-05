@@ -60,19 +60,34 @@ public class ManagerController {
     @ApiOperation("添加一个关联表（加入社团）")
     public String AddManager(Integer as_id,Integer user_id) {
         try {
-            TbManagerEntity tbManagerEntity = new TbManagerEntity();
-            tbManagerEntity.setAsId(AssociationService.findAssociationById(as_id).get().getId());
-            tbManagerEntity.setUserId(user_id);
-            tbManagerEntity.setJoinTime(new Timestamp(new Date().getTime()));
-            tbManagerEntity.setStatus(0);
-            managerService.joinClub(tbManagerEntity);
-            Optional<TbAssociationEntity> tbAssociationEntity = AssociationService.findAssociationById(as_id);
-            if (tbAssociationEntity.isPresent()) {
-                TbAssociationEntity tbAssociationEntity1 = tbAssociationEntity.get();
-                tbAssociationEntity1.setMemberNum(tbAssociationEntity1.getMemberNum() + 1);
-                AssociationService.updateAssociation(tbAssociationEntity1);
+            // TbManagerEntity tbManagerEntity = new TbManagerEntity();
+            // tbManagerEntity.setAsId(AssociationService.findAssociationById(as_id).get().getId());
+            // tbManagerEntity.setUserId(user_id);
+            // tbManagerEntity.setJoinTime(new Timestamp(new Date().getTime()));
+            // tbManagerEntity.setStatus(0);
+            // managerService.joinClub(tbManagerEntity);
+            // Optional<TbAssociationEntity> tbAssociationEntity = AssociationService.findAssociationById(as_id);
+            // if (tbAssociationEntity.isPresent()) {
+            //     TbAssociationEntity tbAssociationEntity1 = tbAssociationEntity.get();
+            //     tbAssociationEntity1.setMemberNum(tbAssociationEntity1.getMemberNum() + 1);
+            //     AssociationService.updateAssociation(tbAssociationEntity1);
+            // }
+            // return ("OK");
+            Optional<TbAssociationEntity> AsE=AssociationService.findAssociationById(as_id);
+            Optional<TbUserEntity> UsE=userService.findUserById(user_id);
+
+            boolean massage= managerService.joinClub(AsE,UsE);
+
+            if (AsE.isPresent()) {
+                 TbAssociationEntity tbAssociationEntity1 = AsE.get();
+                 tbAssociationEntity1.setMemberNum(tbAssociationEntity1.getMemberNum() + 1);
+                 AssociationService.updateAssociation(tbAssociationEntity1);
             }
-            return ("OK");
+
+            if (massage)
+                return "OK";
+            else
+                return "managerService False";
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

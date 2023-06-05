@@ -9,10 +9,9 @@ import com.backend.videoproject_backend.service.ManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
+
+import java.sql.Timestamp;
+import java.util.*;
 
 @Service
 public class ManagerServiceImpl implements ManagerService  {
@@ -20,13 +19,36 @@ public class ManagerServiceImpl implements ManagerService  {
     @Autowired
     private ManagerDao managerDao;
     @Override
-    public boolean joinClub(TbManagerEntity tbManagerEntity){
+    public boolean joinClub(Optional<TbAssociationEntity> associationEntityOptional, Optional<TbUserEntity> userEntityOptional){
         try{
+            if (associationEntityOptional.isEmpty())
+                return false;
+
+            if(userEntityOptional.isEmpty())
+                return false;
+
+/*             TbManagerEntity tbManagerEntity = new TbManagerEntity();
+             tbManagerEntity.setAsId(AssociationService.findAssociationById(as_id).get().getId());
+             tbManagerEntity.setUserId(user_id);
+             tbManagerEntity.setJoinTime(new Timestamp(new Date().getTime()));
+             tbManagerEntity.setStatus(0);
+             managerService.joinClub(tbManagerEntity);
+             Optional<TbAssociationEntity> tbAssociationEntity = AssociationService.findAssociationById(as_id);
+             if (tbAssociationEntity.isPresent()) {
+                 TbAssociationEntity tbAssociationEntity1 = tbAssociationEntity.get();
+                 tbAssociationEntity1.setMemberNum(tbAssociationEntity1.getMemberNum() + 1);
+                 AssociationService.updateAssociation(tbAssociationEntity1);
+             }
+             return ("OK");*/
+            TbManagerEntity tbManagerEntity = new TbManagerEntity();
+            tbManagerEntity.setAsId(associationEntityOptional.get().getId());
+            tbManagerEntity.setUserId(userEntityOptional.get().getId());
+            tbManagerEntity.setJoinTime(new Timestamp(new Date().getTime()));
+            tbManagerEntity.setStatus(0);
             managerDao.save(tbManagerEntity);
 
         }catch (Exception e) {
             return false;
-
         }
         return true;
     }
