@@ -48,9 +48,9 @@ public class AssociationController {
             //创建社长的关联表
             Optional<TbAssociationEntity> AsE=associationService.findAssociationById(tbAssociationEntity.getId());
             Optional<TbUserEntity> UsE=userService.findUserById(user_id);
-            boolean massage= managerService.joinClub(AsE,UsE);
+            String massage= managerService.joinClub(AsE,UsE);
 
-            if (massage)
+            if (massage.equals("Success"))
                 return "OK";
             else
                 return "managerService False";
