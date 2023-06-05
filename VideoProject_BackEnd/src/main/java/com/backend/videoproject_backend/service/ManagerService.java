@@ -8,15 +8,15 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ManagerService {
-    boolean joinClub(Optional<TbAssociationEntity> associationEntityOptional, Optional<TbUserEntity> userEntityOptional);
+    String joinClub(Optional<TbAssociationEntity> associationEntityOptional, Optional<TbUserEntity> userEntityOptional);
 
-    boolean quitClub(Integer as_id,Integer user_id);
+    String DeleteManager(Optional<TbAssociationEntity> associationEntityOptional, Optional<TbUserEntity> userEntityOptional,Optional<TbUserEntity> managerEntityOptional);
 
-    List<TbManagerEntity> ReturnAllMember(Integer as_id);
+    List<Integer> ReturnTragetMembers(Optional<TbAssociationEntity> associationEntityOptional,Integer rank);
 
-    TbManagerEntity ReturnOneMember(Integer as_id,Integer user_id);
+    Optional<TbManagerEntity> ReturnOneMember(Optional<TbAssociationEntity> associationEntityOptional, Optional<TbUserEntity> userEntityOptional);
 
-    List<TbManagerEntity> ReturnJoinedClub(Integer user_id);
+    List<TbManagerEntity> ReturnJoinedClub(Optional<TbUserEntity> userEntityOptional);
 
-    boolean updateManager(TbManagerEntity tbManagerEntity);
+    String ChangeRank(Optional<TbAssociationEntity> associationEntityOptional, Optional<TbUserEntity> userEntityOptional,Optional<TbUserEntity> managerEntityOptional);
 }
