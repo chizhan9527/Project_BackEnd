@@ -21,12 +21,6 @@ public class FollowServiceImpl implements FollowService {
     @Autowired
     private FollowDao followDao;
 
-    @Autowired
-    private StringRedisTemplate stringRedisTemplate;
-
-    @Autowired
-    private UserDao userDao;
-
     @Override
     public String doFollow(Integer userId,Integer followUserId) {
         if(userId<=0||followUserId<=0||userId>=100000000||followUserId>=100000000||userId.equals(followUserId))
@@ -62,55 +56,6 @@ public class FollowServiceImpl implements FollowService {
         } else{
             return "False";
         }
-    }
-
-    @Override
-    public List<TbUserEntity> getCommonFollow(Integer userId,Integer id) {
-        if(userId<=0||id<=0||userId>=100000000||id>=100000000||userId.equals(id))
-            return null;
-        String key1 = "follows:"+userId;
-        String key2 = "follows:"+id;
-        //求交集
-        Set<String> commonFollows = stringRedisTemplate.opsForSet().intersect(key1, key2);
-        if(commonFollows == null || commonFollows.isEmpty()){
-            return new ArrayList<>();
-        }
-        //解析集合
-        List<Integer> ids = commonFollows.stream().map(Integer::valueOf).toList();
-        //查询用户信息
-        List<TbUserEntity> tbUserEntityList = new ArrayList<>();
-        ids.forEach(
-                i -> {
-                    Optional<TbUserEntity> userEntity = userDao.findById(i);
-                    userEntity.ifPresent(tbUserEntityList::add);
-                }
-        );
-        return tbUserEntityList;
-    }
-
-    @Override
-    public List<FollowBox> getFollowInfo(Integer id) {
-        if(id<=0||id>=100000000)
-            return null;
-        // 存储followBox的结果
-        List<FollowBox> followBoxList = new ArrayList<>();
-        // 用id查到所有的关注表实体
-        List<TbFollowEntity> tbFollowEntityList = followDao.findAllByUserId(id);
-        // 取得follow_id的idList
-        List<Integer> ids = tbFollowEntityList.stream().map(TbFollowEntity::getFollowerId).toList();
-        ids.forEach(
-                i ->{
-                    Optional<TbUserEntity> userEntity = userDao.findById(i);
-                    if(userEntity.isPresent()){
-                        FollowBox followBox = new FollowBox();
-                        followBox.setId(i);
-                        followBox.setName(userEntity.get().getName());
-                        followBox.setAvatar(userEntity.get().getAvator());
-                        followBoxList.add(followBox);
-                    }
-                }
-        );
-        return followBoxList;
     }
 
     private Boolean isFollow(Integer userId,Integer followUserId) {
