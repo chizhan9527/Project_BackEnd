@@ -1,1 +1,1 @@
-2023-06-04 22:38:11.371 ERROR 27440 --- [main] org.hibernate.engine.jdbc.spi.SqlExceptionHelper - Cannot add or update a child row: a foreign key constraint fails (`bili`.`tb_follow`, CONSTRAINT `fk_follow_user` FOREIGN KEY (`user_id`) REFERENCES `tb_user` (`id`))
+2023-06-06 00:10:31.348 ERROR 21544 --- [main] org.hibernate.engine.jdbc.spi.SqlExceptionHelper - Cannot add or update a child row: a foreign key constraint fails (`bili`.`tb_like`, CONSTRAINT `fk_like_user` FOREIGN KEY (`user_id`) REFERENCES `tb_user` (`id`))

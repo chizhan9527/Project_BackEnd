@@ -8,6 +8,8 @@ import java.util.List;
 public interface ArticleService {
     String likeArticle(Integer id);
 
+    String likeArticle2(Integer user_id,Integer id);
+
     TbArticleEntity getArticleById(Integer id);
 
     void addArticle(String context);

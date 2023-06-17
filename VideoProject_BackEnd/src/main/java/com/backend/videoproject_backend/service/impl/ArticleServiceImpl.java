@@ -92,7 +92,71 @@ public class ArticleServiceImpl implements ArticleService {
             }
         }
     }
+    @Override
+    public String likeArticle2(Integer user_id,Integer id) {
+        if(Integer.toString(user_id).length()>=9){
+            return "用户不存在";
+        }
+        Optional<TbUserEntity> tbUserEntity = userDao.findById(user_id);
+        if(tbUserEntity.isEmpty()){
+            return "用户不存在";
+        }
+        if(Integer.toString(id).length()>=9){
+            return "文章不存在";
+        }
+        Optional<TbArticleEntity> tbArticleEntity1 = articleDao.findById(id);
+        if(tbArticleEntity1.isEmpty()){
+            return "文章不存在";
+        }
+        //用saToken获取用户当前id
+        //int user_id = StpUtil.getLoginIdAsInt();
+        //判断当前用户是否已经点赞
+        String key = "article:like" + id;
+        Boolean isMember = stringRedisTemplate.opsForSet().isMember(key, Integer.toString(user_id));
+        //如果未点赞可以点赞
+        //数据库相应字段加一
+        //保存到redis的set中
+        Optional<TbArticleEntity> articleEntity = articleDao.findById(id);
 
+        if (Boolean.FALSE.equals(isMember)) {
+            //进行isPresent检查
+            if (articleEntity.isPresent()) {
+                TbArticleEntity tbArticleEntity = articleEntity.get();
+                tbArticleEntity.setLikes(tbArticleEntity.getLikes() + 1);
+                articleDao.save(tbArticleEntity);
+                stringRedisTemplate.opsForSet().add(key, Integer.toString(user_id));
+
+                //存储到like表中
+                TbLikeEntity tbLikeEntity = new TbLikeEntity();
+                tbLikeEntity.setUserId(user_id);
+                tbLikeEntity.setArticleId(id);
+                tbLikeEntity.setCreateTime(new Timestamp(new Date().getTime()));
+                likeDao.save(tbLikeEntity);
+                return "点赞成功";
+            } else {
+                return "文章不存在";
+            }
+        }
+        //如果已点赞可以取消点赞
+        //数据库对应字段减一
+        //从redis的set中删除
+        else {
+            //进行isPresent检查
+            if (articleEntity.isPresent()) {
+                TbArticleEntity tbArticleEntity = articleEntity.get();
+                tbArticleEntity.setLikes(tbArticleEntity.getLikes() - 1);
+                articleDao.save(tbArticleEntity);
+                stringRedisTemplate.opsForSet().remove(key, Integer.toString(user_id));
+
+                //从like表中删除
+                TbLikeEntity tbLikeEntity = likeDao.findByUserIdAndArticleId(user_id, id);
+                likeDao.delete(tbLikeEntity);
+                return "取消点赞成功";
+            } else {
+                return "文章不存在";
+            }
+        }
+    }
     @Override
     public TbArticleEntity getArticleById(Integer id) {
         //进行isPresent检查
