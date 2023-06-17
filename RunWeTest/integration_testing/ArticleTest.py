@@ -1,10 +1,13 @@
 import unittest
 import requests
-import UseCase
+import ArticleUseCase
 from BeautifulReport import BeautifulReport
 
 suite = unittest.TestSuite()    # 类的实例化！！！要加括号才是实例化
-ids = UseCase.ids
+ids = ArticleUseCase.ids
+print(ids)
+likes = ArticleUseCase.likes
+contexts = ArticleUseCase.contexts
 
 
 class ArticleTest(unittest.TestCase):  # 调用unittest
@@ -18,6 +21,19 @@ class ArticleTest(unittest.TestCase):  # 调用unittest
     def tearDown(self) -> None:          # 后置条件
         print("执行结束")  # 打印标示用例执行结束
 
+    def test_like(self):
+        '''
+        点赞文章
+        '''
+        # 查询接口
+        for i in likes:
+            payload = {"user_id": i["user_id"], "id": i["id"]}
+            print(payload)
+            res = requests.put('http://localhost:8081/article/like2/',
+                               params=payload)
+            a = res.text
+        print(a)
+
     def test_get_article(self):
         '''
         获取文章
@@ -29,9 +45,24 @@ class ArticleTest(unittest.TestCase):  # 调用unittest
             a = res.text
             print(a)  # 打印结果
 
+    def test_add_article(self):
+        '''
+        添加文章
+        '''
+        # 查询接口
+        for i in contexts:
+            res = requests.post('http://localhost:8081/article/',
+                                headers={
+                                    'Content-Type': 'application/json', "satoken": token},
+                                params={"context": i})
+            a = res.text
+        print(a)
+
 
 if __name__ == '__main__':
     suite.addTest(ArticleTest('test_get_article'))  # 添加测试用例
+    suite.addTest(ArticleTest('test_like'))  # 添加测试用例
+    suite.addTest(ArticleTest('test_add_article'))  # 添加测试用例
     # 添加用例描述
     result = BeautifulReport(suite)
     result.report(filename='测试报告', description='测试deafult报告',

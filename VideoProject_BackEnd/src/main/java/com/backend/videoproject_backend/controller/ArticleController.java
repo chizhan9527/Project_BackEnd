@@ -28,6 +28,10 @@ public class ArticleController {
     @ApiOperation("发布文章")
     public String publishArticle(String context) {
         try {
+            if(context==null)
+                return "不能为空";
+            if(context.length()>=200)
+                return "长度过长";
             articleService.addArticle(context);
             return "ok";
         } catch (Exception e) {

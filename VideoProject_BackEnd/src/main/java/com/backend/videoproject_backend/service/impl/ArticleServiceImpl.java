@@ -220,6 +220,34 @@ public class ArticleServiceImpl implements ArticleService {
             stringRedisTemplate.opsForZSet().add(key, Integer.toString(tbArticleEntity.getId()), tbArticleEntity.getCreateTime().getTime());
         }
     }
+    public String addArticle2(Integer user_id,String context){
+        if(Integer.toString(user_id).length()>=9){
+            return "用户不存在";
+        }
+        Optional<TbUserEntity> tbUserEntity = userDao.findById(user_id);
+        if(tbUserEntity.isEmpty()){
+            return "用户不存在";
+        }
+        if(context==null){
+            return "文章不能为空";
+        }
+        if(context.length()>=200){
+            return "超出上限";
+        }
+        TbArticleEntity tbArticleEntity = new TbArticleEntity();
+        tbArticleEntity.setContext(context);
+        tbArticleEntity.setLikes(0);
+        tbArticleEntity.setUserId(user_id);
+        //设置时间
+        tbArticleEntity.setCreateTime(new Timestamp(new Date().getTime()));
+        tbArticleEntity.setType("article");
+        try{
+            articleDao.save(tbArticleEntity);
+        }catch (Exception e) {
+            log.error("保存文章失败");
+        }
+        return "保存文章成功";
+    }
 
 
     @Override
