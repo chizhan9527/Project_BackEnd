@@ -64,6 +64,6 @@ if __name__ == '__main__':
     suite.addTest(ArticleTest('test_add_article'))  # 添加测试用例
     # 添加用例描述
     result = BeautifulReport(suite)
-    result.report(filename='Article测试报告', description='Article测试报告',
+    result.report(filename='ArticleController测试报告', description='Article测试报告',
                   log_path='./report')
     # unittest.main()
