@@ -40,10 +40,10 @@ public class FollowController {
     {
         //1.判断是否已经关注
         String isFollow = followService.followOrNot(userId,followUserId);
-        if(isFollow.equals("true")){
+        if(isFollow.equals("False")){
             return followService.doFollow(userId,followUserId);
         }
-        else if(isFollow.equals("false")){
+        else if(isFollow.equals("True")){
             return followService.doUnfollow(userId,followUserId);
         }
         else {
