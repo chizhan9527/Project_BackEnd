@@ -14,7 +14,7 @@ class ArticleTest(unittest.TestCase):  # 调用unittest
     def setUp(self) -> None:  # 前置条件
         # 登录接口
         re = requests.post(url='http://localhost:8081/Login',
-                           data={'password': '1', 'phone': '1'})  # 发送接口请求
+                           data={'password': '123456', 'phone': '16696738903'})  # 发送接口请求
         global token  # 设置一个全局变量
         token = re.json()['data']['tokenValue']  # 给全局变量赋值，值为接口响应的token的值
 
