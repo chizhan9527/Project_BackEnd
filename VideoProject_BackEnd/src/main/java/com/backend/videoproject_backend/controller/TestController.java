@@ -7,6 +7,7 @@ import com.backend.videoproject_backend.utils.SendSmsUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -17,6 +18,9 @@ import java.util.Date;
 public class TestController {
     @Autowired
     private TestService testService;
+
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
 
     @Autowired
     private SendSmsUtil sendSmsUtil;
@@ -74,5 +78,13 @@ public class TestController {
     @RequestMapping("isLogin")
     public String isLogin() {
         return "当前会话是否登录：" + StpUtil.isLogin();
+    }
+
+    @RequestMapping("redis")
+    public String redis(){
+        Integer userId = 10;
+        Integer followUserId = 6;
+        stringRedisTemplate.opsForSet().add("follows:"+userId,followUserId.toString());
+        return "ok";
     }
 }

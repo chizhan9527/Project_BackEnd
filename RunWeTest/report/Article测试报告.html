@@ -7134,7 +7134,7 @@
             "className": "ArticleTest",
             "methodName": "test_get_article",
             "description": "\n        获取文章\n        ",
-            "spendTime": "1.94 s",
+            "spendTime": "2.54 s",
             "status": "成功",
             "log": [
                 "",
@@ -7172,7 +7172,7 @@
             "className": "ArticleTest",
             "methodName": "test_like",
             "description": "\n        点赞文章\n        ",
-            "spendTime": "3.48 s",
+            "spendTime": "3.88 s",
             "status": "成功",
             "log": [
                 "{'user_id': '1000000000', 'id': '2'}",
@@ -7181,7 +7181,12 @@
                 "{'user_id': '4', 'id': '34'}",
                 "{'user_id': '4', 'id': '3'}",
                 "{'user_id': '4', 'id': '3'}",
-                "点赞成功",
+                "{\r",
+                "  \"timestamp\" : \"2023-06-18T12:19:18.401+00:00\",\r",
+                "  \"status\" : 500,\r",
+                "  \"error\" : \"Internal Server Error\",\r",
+                "  \"path\" : \"/article/like2/\"\r",
+                "}",
                 "执行结束",
                 ""
             ]
@@ -7190,7 +7195,7 @@
             "className": "ArticleTest",
             "methodName": "test_add_article",
             "description": "\n        添加文章\n        ",
-            "spendTime": "0.96 s",
+            "spendTime": "0.982 s",
             "status": "成功",
             "log": [
                 "ok",
@@ -7199,11 +7204,11 @@
             ]
         }
     ],
-    "testName": "测试deafult报告",
+    "testName": "Article测试报告",
     "testAll": 3,
     "testFail": 0,
-    "beginTime": "2023-06-18 12:10:05",
-    "totalTime": "7s",
+    "beginTime": "2023-06-18 20:19:11",
+    "totalTime": "8s",
     "testSkip": 0,
     "testError": 0
 };
