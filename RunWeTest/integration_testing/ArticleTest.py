@@ -5,7 +5,6 @@ from BeautifulReport import BeautifulReport
 
 suite = unittest.TestSuite()    # 类的实例化！！！要加括号才是实例化
 ids = ArticleUseCase.ids
-print(ids)
 likes = ArticleUseCase.likes
 contexts = ArticleUseCase.contexts
 
@@ -65,6 +64,6 @@ if __name__ == '__main__':
     suite.addTest(ArticleTest('test_add_article'))  # 添加测试用例
     # 添加用例描述
     result = BeautifulReport(suite)
-    result.report(filename='测试报告', description='测试deafult报告',
+    result.report(filename='ArticleController测试报告', description='Article测试报告',
                   log_path='./report')
     # unittest.main()
