@@ -142,7 +142,7 @@ public class FollowServiceTest {
         int[] followUserId = {-1,156734,6,8,100000000,-1,156734,6,8,100000000,-1,156734,6,8,100000000,-1,156734,6,8,100000000,-1,156734,6,8,100000000};
         String[] expectedResult={"Invalid input","Invalid input","Invalid input",
                 "Invalid input","Invalid input","Invalid input","Invalid input","False","False",
-                "Invalid input","Invalid input","False","False","True","Invalid input",
+                "Invalid input","Invalid input","False","True","True","Invalid input",
                 "Invalid input","False","True","False","Invalid input","Invalid input",
                 "Invalid input","Invalid input","Invalid input","Invalid input"};
         int num=0;

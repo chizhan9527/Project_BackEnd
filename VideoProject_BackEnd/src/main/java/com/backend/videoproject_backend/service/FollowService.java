@@ -13,7 +13,4 @@ public interface FollowService {
 
     String followOrNot(Integer userId,Integer followUserId);
 
-    List<TbUserEntity> getCommonFollow(Integer userId,Integer id);
-
-    List<FollowBox> getFollowInfo(Integer id);
 }

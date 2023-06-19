@@ -28,6 +28,10 @@ public class ArticleController {
     @ApiOperation("发布文章")
     public String publishArticle(String context) {
         try {
+            if(context==null)
+                return "不能为空";
+            if(context.length()>=200)
+                return "长度过长";
             articleService.addArticle(context);
             return "ok";
         } catch (Exception e) {
@@ -35,14 +39,21 @@ public class ArticleController {
         }
     }
 
-    @PutMapping("/article/like/{id}")
+    @PutMapping("/article/like2")
     @ResponseBody
     @ApiOperation("点赞")
-    public String likeArticle(@PathVariable Integer id)
+    public String likeArticle2(Integer user_id,Integer id)
+    {
+        return articleService.likeArticle2(user_id,id);
+    }
+
+    @PutMapping("/article/like")
+    @ResponseBody
+    @ApiOperation("点赞")
+    public String likeArticle(Integer id)
     {
         return articleService.likeArticle(id);
     }
-
     @GetMapping("/article/{id}")
     @ResponseBody
     @ApiOperation("获取文章")
