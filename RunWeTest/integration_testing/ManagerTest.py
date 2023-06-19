@@ -16,11 +16,12 @@ class ManagerTest(unittest.TestCase):  # 调用unittest
     def tearDown(self) -> None:  # 后置条件
         print("执行结束")  # 打印标示用例执行结束
 
-    def test_changRank(self):
-        # changRank接口
+    def test_changeRank(self):
+        # changeRank接口
         print("测试changeRank接口")
         for i in changeRank:
-            payload = {"as_id": i["as_id"], "user_id": i["user_id"], "manager_id": i["manager_id"]}
+            payload = {
+                "as_id": i["as_id"], "user_id": i["user_id"], "manager_id": i["manager_id"]}
             print(payload)
             res = requests.put(url='http://localhost:8081/changeRank',
                                params=payload)
@@ -64,7 +65,8 @@ class ManagerTest(unittest.TestCase):  # 调用unittest
         # delete Manager接口
         print("测试delete Manager接口")
         for i in deleteManager:
-            payload = {"as_id": i["as_id"], "user_id": i["user_id"], "manager_id": i["manager_id"]}
+            payload = {
+                "as_id": i["as_id"], "user_id": i["user_id"], "manager_id": i["manager_id"]}
             print(payload)
             res = requests.delete('http://localhost:8081/manager',
                                   params=payload)
