@@ -158,6 +158,11 @@ public class ManagerController {
     public List<TbAssociationEntity> FindJoinedClub(@PathVariable Integer user_id)
     {
         try {
+            if(user_id<1||user_id>100000000)
+            {
+                System.out.println("No such user");
+                return null;
+            }
             Optional<TbUserEntity> UsE=userService.findUserById(user_id);
 
             List<TbAssociationEntity> tbAssociationEntities=new ArrayList<>();
@@ -193,7 +198,7 @@ public class ManagerController {
 
             Optional<TbManagerEntity> tbManagerEntityOptional=managerService.ReturnOneMember(AsE,UsE);
             if (tbManagerEntityOptional.isEmpty())
-                return null;
+                return -1;
             return tbManagerEntityOptional.get().getStatus();
         } catch (Exception e) {
             throw new RuntimeException(e);

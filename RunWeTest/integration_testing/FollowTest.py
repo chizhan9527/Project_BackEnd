@@ -67,6 +67,6 @@ if __name__ == '__main__':
     suite.addTest(FollowTest('test_commonFollow'))
     # 添加用例描述
     result = BeautifulReport(suite)
-    result.report(filename='FollowController测试报告', description='测试default报告',
+    result.report(filename='FollowController测试报告', description='FollowController',
                   log_path='./report')
     # unittest.main()

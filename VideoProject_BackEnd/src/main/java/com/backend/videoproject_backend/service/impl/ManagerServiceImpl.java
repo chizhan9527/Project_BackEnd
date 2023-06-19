@@ -32,12 +32,17 @@ public class ManagerServiceImpl implements ManagerService  {
 
                 return message;
             }
+            if(managerDao.findByAsIdAndUserId(associationEntityOptional.get().getId(),userEntityOptional.get().getId())!=null)
+            {
+                message +=  "User has joined";
+                return message;
+            }
             TbManagerEntity tbManagerEntity = new TbManagerEntity();
             tbManagerEntity.setAsId(associationEntityOptional.get().getId());
             tbManagerEntity.setUserId(userEntityOptional.get().getId());
             tbManagerEntity.setJoinTime(new Timestamp(new Date().getTime()));
             tbManagerEntity.setStatus(0);
-            managerDao.save(tbManagerEntity);
+            //managerDao.save(tbManagerEntity);
 
         }catch (Exception e) {
             return "joinClub False";
@@ -79,7 +84,7 @@ public class ManagerServiceImpl implements ManagerService  {
                 return message;
             }
             //自己退出则直接移除自己的manager表
-            if (user_id==manager_id)
+            /*if (user_id==manager_id)
                 managerDao.deleteByAsIdAndUserId(as_id,user_id);
             else {
                 if (ManagerinAs.getStatus() > UserinAs.getStatus()) {
@@ -87,9 +92,14 @@ public class ManagerServiceImpl implements ManagerService  {
                 } else if (ManagerinAs.getStatus() == 0)
                     return "No permissions！";
             }
+            */
 /*
             //managerDao.deleteByAsIdAndUserId(as_id,user_id);
 */
+            if(user_id!=manager_id&&ManagerinAs.getStatus() == 0)
+            {
+                return "No permissions！";
+            }
         }catch (Exception e) {
             return "DeleteManager False";
         }
@@ -114,7 +124,7 @@ public class ManagerServiceImpl implements ManagerService  {
         List<TbManagerEntity> ClubMember = managerDao.findAllByAsId(as_id);
 
         for (TbManagerEntity tbManagerEntity : ClubMember) {
-            if (tbManagerEntity.getStatus() >= rank) {
+            if (tbManagerEntity.getStatus() >= rank && rank>=0) {
                 user_list.add(tbManagerEntity.getUserId());
             }
         }
