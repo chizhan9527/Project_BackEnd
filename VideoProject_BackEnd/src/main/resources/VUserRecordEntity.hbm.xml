@@ -9,4 +9,5 @@
         <property name="userName" column="user_name"/>
         <property name="sumDistance" column="sum_distance"/>
     </class>
+
 </hibernate-mapping>
