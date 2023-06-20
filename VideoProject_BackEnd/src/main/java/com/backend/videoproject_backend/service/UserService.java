@@ -33,5 +33,7 @@ public interface UserService {
 
     void postFeedback(TbFeedbackEntity tbFeedbackEntity);
 
+    String updateUser2(Integer id,Integer gender,String email);
 
+    String deleteUser2(Integer id);
 }

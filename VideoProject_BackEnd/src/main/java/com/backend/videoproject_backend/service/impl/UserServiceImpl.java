@@ -35,6 +35,7 @@ public class UserServiceImpl implements UserService {
     {
         if(tbUserEntity.getName()==null)return "userName input error";
         else if(tbUserEntity.getPhone().length()!=11)return "phone error";
+        else if(tbUserEntity.getPhone().contains("a")) return "phone error";
         else if(tbUserEntity.getPassword().length()<4)return "password too short";
         else if(tbUserEntity.getAvator().length()<8)return "url invalid";
         else if(tbUserEntity.getCreateTime()==null)return "time no format";
@@ -45,6 +46,17 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteUser(Integer id)
     {
+        //userDao.deleteById(id);
+    }
+
+    @Override
+    public String deleteUser2(Integer id)
+    {
+        if(id<=0||id>=100000000)
+            return "invalidInput";
+        if(findUserById(id).isEmpty())
+            return "userNotFound";
+        return "ok";
         //userDao.deleteById(id);
     }
 
@@ -65,6 +77,8 @@ public class UserServiceImpl implements UserService {
     {
         //userDao.save(tbUserEntity);
     }
+
+
 
     @Override
     public Optional<TbUserEntity> findUserByName(String name)
@@ -90,5 +104,26 @@ public class UserServiceImpl implements UserService {
     @Override
     public void postFeedback(TbFeedbackEntity tbFeedbackEntity) {
         //feedbackDao.save(tbFeedbackEntity);
+    }
+
+    @Override
+    public String updateUser2(Integer id, Integer gender, String email) {
+        try {
+            if(id>=100000000||id<=0)
+                return "id invalid";
+            Optional<TbUserEntity> target = findUserById(id);
+            if(target.isEmpty()){
+                return "用户不存在";
+            }
+            if(gender!=null)
+                if(gender!=0&&gender!=1)
+                    return "gender invalid";
+                else if (email!=null)
+                    if(!email.contains(".com"))
+                        return "email invalid";
+            return "ok";
+        }catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }
