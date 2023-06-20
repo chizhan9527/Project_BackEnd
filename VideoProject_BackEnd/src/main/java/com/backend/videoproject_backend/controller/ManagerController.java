@@ -235,9 +235,9 @@ public class ManagerController {
             if(AsE.isPresent()) {
                 TbAssociationEntity tbAssociationEntity1 = AsE.get();
                 tbAssociationEntity1.setMemberNum(tbAssociationEntity1.getMemberNum() - 1);
-                AssociationService.updateAssociation(tbAssociationEntity1);
-                if (tbAssociationEntity1.getMemberNum() == 0)
-                    AssociationService.delClub(as_id);
+                //AssociationService.updateAssociation(tbAssociationEntity1);
+                //if (tbAssociationEntity1.getMemberNum() == 0)
+                    //AssociationService.delClub(as_id);
             }
             return massage;
 
