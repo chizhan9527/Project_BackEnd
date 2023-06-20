@@ -38,14 +38,14 @@ public class UserServiceImpl implements UserService {
         else if(tbUserEntity.getPassword().length()<4)return "password too short";
         else if(tbUserEntity.getAvator().length()<8)return "url invalid";
         else if(tbUserEntity.getCreateTime()==null)return "time no format";
-        userDao.save(tbUserEntity);
+        //userDao.save(tbUserEntity);
         return "register success";
     }
 
     @Override
     public void deleteUser(Integer id)
     {
-        userDao.deleteById(id);
+        //userDao.deleteById(id);
     }
 
     @Override
@@ -63,7 +63,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void updateUser(TbUserEntity tbUserEntity)
     {
-        userDao.save(tbUserEntity);
+        //userDao.save(tbUserEntity);
     }
 
     @Override
@@ -84,11 +84,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void addPhysical(TbPhysicalEntity tbPhysicalEntity) {
-        physicalDao.save(tbPhysicalEntity);
+        //physicalDao.save(tbPhysicalEntity);
     }
 
     @Override
     public void postFeedback(TbFeedbackEntity tbFeedbackEntity) {
-        feedbackDao.save(tbFeedbackEntity);
+        //feedbackDao.save(tbFeedbackEntity);
     }
 }

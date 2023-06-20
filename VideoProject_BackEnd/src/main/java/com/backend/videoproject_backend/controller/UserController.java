@@ -45,6 +45,11 @@ public class UserController {
             tbUserEntity.setPassword(encrypt(password));
             tbUserEntity.setAvator(avatar);
             tbUserEntity.setCreateTime(new Timestamp(new Date().getTime()));
+            if(tbUserEntity.getName()==null)return "userName input error";
+            else if(tbUserEntity.getPhone().length()!=11)return "phone error";
+            else if(tbUserEntity.getPassword().length()<4)return "password too short";
+            else if(tbUserEntity.getAvator().length()<8)return "url invalid";
+            else if(tbUserEntity.getCreateTime()==null)return "time no format";
             userService.addUser(tbUserEntity);
             return "ok";
         } catch (Exception e) {
@@ -58,6 +63,10 @@ public class UserController {
     public String DeleteUser(@PathVariable Integer id)
     {
         try {
+            if(id<=0||id>=100000000)
+                return "invalidInput";
+            if(userService.findUserById(id).isEmpty())
+                return "userNotFound";
             userService.deleteUser(id);
             return "ok";
         } catch (Exception e) {
@@ -83,6 +92,8 @@ public class UserController {
     public Optional<TbUserEntity> FindOneUser(@PathVariable Integer id)
     {
         try {
+            if(id<=0||id>=100000000)
+                return Optional.empty();
             return userService.findUserById(id);
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -95,6 +106,14 @@ public class UserController {
     public String UpdateUser(Integer id,String name,Integer gender,String email,String birthday,String detail)
     {
         try {
+            if(id>=100000000||id<=0)
+                return "id invalid";
+            else if(gender!=null)
+                if(gender!=0&&gender!=1)
+                    return "gender invalid";
+            else if (email!=null)
+                if(!email.contains(".com"))
+                    return "email invalid";
             Optional<TbUserEntity> target = userService.findUserById(id);
             if(target.isPresent()) {
                 target.get().setName(name);
