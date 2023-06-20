@@ -32,11 +32,13 @@ public class ManagerServiceImpl implements ManagerService  {
 
                 return message;
             }
+/*
             if(managerDao.findByAsIdAndUserId(associationEntityOptional.get().getId(),userEntityOptional.get().getId())!=null)
             {
                 message +=  "User has joined";
                 return message;
             }
+*/
             TbManagerEntity tbManagerEntity = new TbManagerEntity();
             tbManagerEntity.setAsId(associationEntityOptional.get().getId());
             tbManagerEntity.setUserId(userEntityOptional.get().getId());
@@ -84,15 +86,15 @@ public class ManagerServiceImpl implements ManagerService  {
                 return message;
             }
             //自己退出则直接移除自己的manager表
-            /*if (user_id==manager_id)
-                managerDao.deleteByAsIdAndUserId(as_id,user_id);
+            if (user_id==manager_id)
+                //managerDao.deleteByAsIdAndUserId(as_id,user_id);
+                ;
             else {
                 if (ManagerinAs.getStatus() > UserinAs.getStatus()) {
-                    managerDao.deleteByAsIdAndUserId(as_id,user_id);
+                    //managerDao.deleteByAsIdAndUserId(as_id,user_id);
                 } else if (ManagerinAs.getStatus() == 0)
                     return "No permissions！";
             }
-            */
 /*
             //managerDao.deleteByAsIdAndUserId(as_id,user_id);
 */
@@ -156,7 +158,7 @@ public class ManagerServiceImpl implements ManagerService  {
 
             if(res.isEmpty())
             {
-                System.out.println("ReturnOneMember False! No users in association");
+                System.out.println("ReturnOneMember False! user not in the association");
             }
             else
                 System.out.println("ReturnOneMember Success!");
@@ -225,12 +227,12 @@ public class ManagerServiceImpl implements ManagerService  {
                 if(rank==1)//为管理员，降级
                 {
                     tbUserEntity.setStatus(0);
-                    managerDao.save(tbUserEntity);
+                    //managerDao.save(tbUserEntity);
                 }
                 else if(rank==0)//为用户，升级
                 {
                     tbUserEntity.setStatus(1);
-                    managerDao.save(tbUserEntity);
+                    //managerDao.save(tbUserEntity);
                 }
             }
             else
