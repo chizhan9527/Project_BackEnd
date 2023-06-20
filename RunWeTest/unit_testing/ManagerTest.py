@@ -94,6 +94,6 @@ if __name__ == '__main__':
     suite.addTest(ManagerTest('test_getManager'))
     # 添加用例描述
     result = BeautifulReport(suite)
-    result.report(filename='ManagerController测试报告', description='ManagerController',
+    result.report(filename='Manager单元测试报告', description='Manager单元测试',
                   log_path='./report')
     # unittest.main()

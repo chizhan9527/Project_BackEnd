@@ -42,9 +42,15 @@ public class UserController {
             TbUserEntity tbUserEntity = new TbUserEntity();
             tbUserEntity.setName(name);
             tbUserEntity.setPhone(phone);
+            if(password.length()<4)return"password too short";
             tbUserEntity.setPassword(encrypt(password));
             tbUserEntity.setAvator(avatar);
             tbUserEntity.setCreateTime(new Timestamp(new Date().getTime()));
+            if(tbUserEntity.getName()==null)return "userName input error";
+            else if(tbUserEntity.getPhone().length()!=11)return "phone error";
+            //else if(tbUserEntity.getPassword().length()<4)return "password too short";
+            else if(tbUserEntity.getAvator().length()<8)return "url invalid";
+            else if(tbUserEntity.getCreateTime()==null)return "time no format";
             userService.addUser(tbUserEntity);
             return "ok";
         } catch (Exception e) {
@@ -58,6 +64,10 @@ public class UserController {
     public String DeleteUser(@PathVariable Integer id)
     {
         try {
+            if(id<=0||id>=100000000)
+                return "invalidInput";
+            if(userService.findUserById(id).isEmpty())
+                return "userNotFound";
             userService.deleteUser(id);
             return "ok";
         } catch (Exception e) {
@@ -83,6 +93,8 @@ public class UserController {
     public Optional<TbUserEntity> FindOneUser(@PathVariable Integer id)
     {
         try {
+            if(id<=0||id>=100000000)
+                return Optional.empty();
             return userService.findUserById(id);
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -95,7 +107,19 @@ public class UserController {
     public String UpdateUser(Integer id,String name,Integer gender,String email,String birthday,String detail)
     {
         try {
+            if(id>=100000000||id<=0)
+                return "id invalid";
             Optional<TbUserEntity> target = userService.findUserById(id);
+            if(target.isEmpty()){
+                return "用户不存在";
+            }
+            if(gender!=null)
+                if(gender!=0&&gender!=1)
+                    return "gender invalid";
+            else if (email!=null)
+                if(!email.contains(".com"))
+                    return "email invalid";
+
             if(target.isPresent()) {
                 target.get().setName(name);
                 target.get().setGender(gender);
@@ -198,6 +222,7 @@ public class UserController {
     public List<TbUserEntity> SearchClub(@PathVariable String name)
     {
         try {
+            if(name.length()>=10) return null;
             return userDao.findByNameLike("%"+name+"%");
         } catch (Exception e) {
             throw new RuntimeException(e);

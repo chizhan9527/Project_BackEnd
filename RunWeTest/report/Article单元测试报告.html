@@ -7128,39 +7128,42 @@
 </script>
 <script type="text/javascript">
     var resultData = {
-    "testPass": 4,
+    "testPass": 3,
     "testResult": [
-        {
-            "className": "ArticleTest",
-            "methodName": "test_add_article",
-            "description": "\n        添加文章\n        ",
-            "spendTime": "2.44 s",
-            "status": "成功",
-            "log": [
-                "ok",
-                "执行结束",
-                ""
-            ]
-        },
         {
             "className": "ArticleTest",
             "methodName": "test_get_article",
             "description": "\n        获取文章\n        ",
-            "spendTime": "1.35 s",
+            "spendTime": "3.28 s",
             "status": "成功",
             "log": [
+                "",
+                "",
                 "{\r",
-                "  \"id\" : 35,\r",
-                "  \"context\" : \"hello,world!\",\r",
-                "  \"likes\" : 0,\r",
-                "  \"userId\" : 29,\r",
+                "  \"id\" : 2,\r",
+                "  \"context\" : \"我来这波全写了\",\r",
+                "  \"likes\" : 2,\r",
+                "  \"userId\" : 10,\r",
                 "  \"parentId\" : null,\r",
-                "  \"createTime\" : \"2023-06-18T04:10:12.000+00:00\",\r",
-                "  \"name\" : \"test\",\r",
-                "  \"avatar\" : \"00000000000000\",\r",
+                "  \"createTime\" : \"2022-10-24T15:33:34.000+00:00\",\r",
+                "  \"name\" : \"金逸\",\r",
+                "  \"avatar\" : \"http://123.60.110.3/i/2022/12/03/10kf6jn.png\",\r",
                 "  \"type\" : \"article\",\r",
                 "  \"like\" : false\r",
                 "}",
+                "{\r",
+                "  \"id\" : 3,\r",
+                "  \"context\" : \"手写高性能服务器！\",\r",
+                "  \"likes\" : 0,\r",
+                "  \"userId\" : 10,\r",
+                "  \"parentId\" : null,\r",
+                "  \"createTime\" : \"2022-10-24T16:10:36.000+00:00\",\r",
+                "  \"name\" : \"金逸\",\r",
+                "  \"avatar\" : \"http://123.60.110.3/i/2022/12/03/10kf6jn.png\",\r",
+                "  \"type\" : \"article\",\r",
+                "  \"like\" : false\r",
+                "}",
+                "",
                 "执行结束",
                 ""
             ]
@@ -7169,34 +7172,43 @@
             "className": "ArticleTest",
             "methodName": "test_like",
             "description": "\n        点赞文章\n        ",
-            "spendTime": "1.82 s",
+            "spendTime": "4.36 s",
             "status": "成功",
             "log": [
-                "{'user_id': 29, 'id': 35}",
-                "点赞成功",
+                "{'user_id': '1000000000', 'id': '2'}",
+                "{'user_id': '30', 'id': '2'}",
+                "{'user_id': '4', 'id': '1000000000'}",
+                "{'user_id': '4', 'id': '34'}",
+                "{'user_id': '4', 'id': '3'}",
+                "{'user_id': '4', 'id': '3'}",
+                "{\r",
+                "  \"timestamp\" : \"2023-06-20T10:45:40.827+00:00\",\r",
+                "  \"status\" : 500,\r",
+                "  \"error\" : \"Internal Server Error\",\r",
+                "  \"path\" : \"/article/like2/\"\r",
+                "}",
                 "执行结束",
                 ""
             ]
         },
         {
             "className": "ArticleTest",
-            "methodName": "test_unlike",
-            "description": "\n        取消点赞文章\n        ",
-            "spendTime": "1.85 s",
+            "methodName": "test_add_article",
+            "description": "\n        添加文章\n        ",
+            "spendTime": "1.4 s",
             "status": "成功",
             "log": [
-                "{'user_id': 29, 'id': 35}",
-                "取消点赞成功",
+                "ok",
                 "执行结束",
                 ""
             ]
         }
     ],
-    "testName": "Article系统测试报告",
-    "testAll": 4,
+    "testName": "Article单元测试报告",
+    "testAll": 3,
     "testFail": 0,
-    "beginTime": "2023-06-19 23:40:46",
-    "totalTime": "8s",
+    "beginTime": "2023-06-20 18:45:33",
+    "totalTime": "9s",
     "testSkip": 0,
     "testError": 0
 };
