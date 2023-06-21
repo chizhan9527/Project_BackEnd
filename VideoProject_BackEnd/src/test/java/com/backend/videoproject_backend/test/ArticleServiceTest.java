@@ -64,7 +64,9 @@ public class ArticleServiceTest {
         }
         num++;
     }
-    
+
+
+
     @Test
     public void testGet(){
         TbArticleEntity tbArticleEntity;

@@ -41,16 +41,6 @@ class ArticleTest(unittest.TestCase):  # 调用unittest
             a = res.text
             print(a)
 
-    def test_search(self):
-        '''
-        搜索用户
-        '''
-        # 搜索接口
-        for i in searchs:
-            res = requests.get('http://localhost:8081/SearchUser/'+i)
-            a = res.text
-            print(a)
-
     def test_put(self):
         '''
         修改用户信息
@@ -67,10 +57,9 @@ class ArticleTest(unittest.TestCase):  # 调用unittest
 if __name__ == '__main__':
     suite.addTest(ArticleTest('test_add'))  # 添加测试用例
     suite.addTest(ArticleTest('test_delete'))  # 添加测试用例
-    suite.addTest(ArticleTest('test_search'))  # 添加测试用例
     suite.addTest(ArticleTest('test_put'))  # 添加测试用例
     # 添加用例描述
     result = BeautifulReport(suite)
-    result.report(filename='UserController测试报告', description='UserController',
+    result.report(filename='User单元测试报告', description='User单元测试',
                   log_path='./report')
     # unittest.main()
